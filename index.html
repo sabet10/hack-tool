@@ -195,7 +195,7 @@
 <script>
 // ---------- CONFIG ----------
 const API = 'https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json?ts=';
-const PROXY = 'https://api.allorigins.win/raw?url=';
+const PROXY = 'https://corsproxy.io/?';
 const REFRESH_MS = 30000;
 
 // ---------- VARIABLES ----------
@@ -294,7 +294,7 @@ async function fetchHistory() {
   try {
     document.getElementById('status').textContent = 'ডেটা আনছি...';
     const url = API + Date.now();
-    const res = await fetch(PROXY + encodeURIComponent(url));
+    const res = await fetch (PROXY + url);
     const json = await res.json();
 
     if (json && json.data && json.data.list) {
