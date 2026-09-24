@@ -3,274 +3,427 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SABET Signal</title>
+<title>SABET</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: radial-gradient(circle at top, #1a0033, #000);
+    background: #0a0a0a;
+    background-image:
+      radial-gradient(circle at 20% 10%, #1a003366 0%, transparent 50%),
+      radial-gradient(circle at 80% 90%, #00336666 0%, transparent 50%);
     color: #fff;
     min-height: 100vh;
-    padding: 12px;
+    padding: 14px;
+    padding-bottom: 40px;
   }
+
+  /* ===== HEADER ===== */
   .header {
     text-align: center;
-    padding: 16px;
-    background: linear-gradient(90deg, #ff00cc, #00ffcc);
-    color: #000;
-    border-radius: 14px;
-    font-weight: 900;
-    font-size: 26px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 30px #ff00cc88;
-    letter-spacing: 4px;
+    padding: 18px 10px;
+    margin-bottom: 14px;
+    position: relative;
   }
+  .header .name {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    background: linear-gradient(90deg, #00ffe0, #00b3ff, #b300ff, #ff00c8);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientMove 4s ease infinite;
+    text-shadow: 0 0 40px #00ffe055;
+  }
+  .header .sub {
+    font-size: 10px;
+    letter-spacing: 6px;
+    color: #00ffe088;
+    margin-top: 4px;
+    font-weight: 600;
+  }
+  @keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* ===== TOP BAR ===== */
   .top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, #0d0d1f, #1a0033);
-    border: 1px solid #00ffcc55;
-    border-radius: 12px;
-    padding: 12px 16px;
-    margin-bottom: 12px;
-    font-size: 13px;
-    box-shadow: 0 0 15px #00ffcc22;
+    background: linear-gradient(135deg, #10101c, #1a1a2e);
+    border: 1px solid #00ffe033;
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 0 20px #00ffe015;
   }
-  .top-bar .period-label { color: #888; font-size: 11px; }
+  .top-bar .col {
+    display: flex;
+    flex-direction: column;
+  }
+  .top-bar .col.right { align-items: flex-end; }
+  .top-bar .lbl {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #666;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
   .top-bar .period {
-    color: #00ffcc;
-    font-weight: bold;
-    font-size: 16px;
-    display: block;
-    text-shadow: 0 0 10px #00ffcc;
+    color: #00ffe0;
+    font-weight: 900;
+    font-size: 22px;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 15px #00ffe0;
+    letter-spacing: 2px;
   }
-  .top-bar .timer-label { color: #888; font-size: 11px; text-align: right; }
   .top-bar .timer {
     color: #ffd700;
-    font-weight: bold;
-    font-size: 22px;
-    display: block;
-    text-shadow: 0 0 10px #ffd700;
+    font-weight: 900;
+    font-size: 26px;
     font-family: 'Courier New', monospace;
+    text-shadow: 0 0 15px #ffd700;
+    letter-spacing: 2px;
+    transition: color 0.3s;
   }
+  .top-bar .timer.danger {
+    color: #ff3366;
+    text-shadow: 0 0 20px #ff3366;
+    animation: blink 0.5s infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* ===== MAIN SIGNAL BOX ===== */
   .main-box {
-    background: linear-gradient(145deg, #0d0d1f, #1a0033);
-    border: 2px solid #00ffcc;
-    border-radius: 18px;
-    padding: 24px;
-    text-align: center;
-    box-shadow: 0 0 35px #00ffcc55, inset 0 0 25px #00ffcc11;
-    margin-bottom: 12px;
     position: relative;
+    background: linear-gradient(160deg, #0d0d1a, #14142a, #0d0d1a);
+    border-radius: 22px;
+    padding: 28px 20px 24px;
+    text-align: center;
+    margin-bottom: 14px;
     overflow: hidden;
+    box-shadow: 0 0 40px #00ffe022, inset 0 0 30px #00ffe008;
   }
   .main-box::before {
     content: '';
     position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: conic-gradient(from 0deg, transparent, #00ffcc33, transparent, #ff00cc33, transparent);
-    animation: rotate 8s linear infinite;
+    inset: -2px;
+    border-radius: 22px;
+    padding: 2px;
+    background: linear-gradient(135deg, #00ffe0, #ff00c8, #00ffe0);
+    background-size: 300% 300%;
+    animation: borderFlow 6s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     z-index: 0;
   }
-  @keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  @keyframes borderFlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 300% 300%; }
   }
-  .main-box > * { position: relative; z-index: 1; }
-  .label {
-    font-size: 12px;
-    color: #ff00cc;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-weight: bold;
+  .main-box > * { position: relative; z-index: 2; }
+
+  .signal-label {
+    font-size: 10px;
+    letter-spacing: 6px;
+    color: #00ffe0;
+    font-weight: 800;
+    margin-bottom: 8px;
+    text-shadow: 0 0 10px #00ffe0;
   }
   .signal-big {
-    font-size: 60px;
+    font-size: 64px;
     font-weight: 900;
-    margin: 10px 0;
-    text-shadow: 0 0 30px currentColor;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
+    margin: 8px 0;
+    line-height: 1;
+    transition: all 0.4s;
+  }
+  .signal-big.big-color {
+    color: #ff9d3d;
+    text-shadow: 0 0 40px #ff9d3d, 0 0 80px #ff9d3d55;
+    animation: glowOrange 2s ease-in-out infinite alternate;
+  }
+  .signal-big.small-color {
+    color: #4fc3ff;
+    text-shadow: 0 0 40px #4fc3ff, 0 0 80px #4fc3ff55;
+    animation: glowBlue 2s ease-in-out infinite alternate;
+  }
+  @keyframes glowOrange {
+    from { text-shadow: 0 0 30px #ff9d3d, 0 0 60px #ff9d3d44; }
+    to { text-shadow: 0 0 50px #ff9d3d, 0 0 90px #ff9d3d66; }
+  }
+  @keyframes glowBlue {
+    from { text-shadow: 0 0 30px #4fc3ff, 0 0 60px #4fc3ff44; }
+    to { text-shadow: 0 0 50px #4fc3ff, 0 0 90px #4fc3ff66; }
+  }
+  .signal-num-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
   }
   .signal-num {
-    font-size: 52px;
+    font-size: 54px;
     font-weight: 900;
     color: #ffd700;
-    margin: 4px 0;
-    text-shadow: 0 0 25px #ffd700;
     font-family: 'Courier New', monospace;
+    text-shadow: 0 0 30px #ffd700;
+    line-height: 1;
+  }
+  .signal-emoji {
+    font-size: 32px;
+    filter: drop-shadow(0 0 10px currentColor);
   }
   .signal-color {
-    font-size: 18px;
-    margin-top: 8px;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-  .confidence {
-    margin-top: 16px;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-top: 6px;
     color: #ccc;
-    font-weight: bold;
   }
-  .conf-value {
-    color: #00ffcc;
-    font-size: 20px;
-    text-shadow: 0 0 10px #00ffcc;
+
+  /* ===== ACCURACY ===== */
+  .accuracy-wrap {
+    margin-top: 20px;
+  }
+  .accuracy-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #888;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .accuracy-value {
+    color: #00ffe0;
+    font-size: 22px;
+    font-weight: 900;
+    text-shadow: 0 0 15px #00ffe0;
+    font-family: 'Courier New', monospace;
   }
   .conf-bar {
-    height: 12px;
-    background: #111;
-    border-radius: 6px;
-    margin-top: 10px;
+    height: 10px;
+    background: #0a0a12;
+    border-radius: 5px;
     overflow: hidden;
-    border: 1px solid #333;
-    position: relative;
+    border: 1px solid #00ffe033;
+    box-shadow: inset 0 0 10px #000;
   }
   .conf-fill {
     height: 100%;
-    background: linear-gradient(90deg, #00ffcc, #ff00cc);
+    background: linear-gradient(90deg, #00ffe0, #00b3ff, #b300ff);
+    background-size: 200% 100%;
     width: 0%;
-    transition: width 0.8s ease;
-    box-shadow: 0 0 15px #00ffcc;
-    position: relative;
+    transition: width 0.7s ease;
+    box-shadow: 0 0 15px #00ffe0;
+    animation: fillFlow 3s linear infinite;
   }
-  .conf-fill::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(90deg, transparent, #fff5, transparent);
-    animation: shine 2s infinite;
+  @keyframes fillFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
   }
-  @keyframes shine {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
+
+  /* ===== STATS ===== */
   .stats {
-    display: flex;
-    justify-content: space-around;
-    margin: 12px 0;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
   }
   .stat-box {
-    flex: 1;
-    background: linear-gradient(145deg, #0d0d1f, #1a0033);
-    padding: 14px 8px;
-    border-radius: 12px;
-    border: 1px solid #00ffcc44;
+    background: linear-gradient(145deg, #10101c, #1a1a2e);
+    padding: 14px 6px;
+    border-radius: 14px;
     text-align: center;
-    box-shadow: 0 0 12px #00ffcc22;
+    border: 1px solid #ffffff11;
+    position: relative;
+    overflow: hidden;
   }
+  .stat-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .stat-box.win::after { background: #00ff88; box-shadow: 0 0 10px #00ff88; }
+  .stat-box.loss::after { background: #ff3366; box-shadow: 0 0 10px #ff3366; }
+  .stat-box.total::after { background: #ffd700; box-shadow: 0 0 10px #ffd700; }
+
   .stat-num {
     font-size: 26px;
     font-weight: 900;
     display: block;
-    text-shadow: 0 0 12px currentColor;
     font-family: 'Courier New', monospace;
+    line-height: 1;
   }
+  .stat-box.win .stat-num { color: #00ff88; text-shadow: 0 0 12px #00ff88; }
+  .stat-box.loss .stat-num { color: #ff3366; text-shadow: 0 0 12px #ff3366; }
+  .stat-box.total .stat-num { color: #ffd700; text-shadow: 0 0 12px #ffd700; }
   .stat-label {
-    font-size: 11px;
-    color: #aaa;
+    font-size: 9px;
     letter-spacing: 2px;
-    margin-top: 4px;
+    color: #777;
+    margin-top: 6px;
+    font-weight: 700;
   }
-  .win .stat-num { color: #00ff88; }
-  .loss .stat-num { color: #ff4466; }
-  .total .stat-num { color: #ffd700; }
-  .section-title {
-    color: #00ffcc;
-    font-size: 13px;
-    margin: 14px 0 8px;
-    letter-spacing: 3px;
-    font-weight: bold;
+
+  /* ===== HISTORY ===== */
+  .hist-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
+    padding: 0 4px;
   }
-  .section-title .count {
-    color: #ffd700;
-    font-size: 14px;
-    background: #1a0033;
-    padding: 2px 10px;
+  .hist-title .txt {
+    color: #00ffe0;
+    font-size: 11px;
+    letter-spacing: 4px;
+    font-weight: 800;
+  }
+  .hist-title .cnt {
+    background: #00ffe022;
+    color: #00ffe0;
+    font-size: 12px;
+    font-weight: 900;
+    padding: 4px 12px;
     border-radius: 10px;
-    border: 1px solid #ffd70055;
+    border: 1px solid #00ffe044;
+    font-family: 'Courier New', monospace;
   }
   .history {
     max-height: 340px;
     overflow-y: auto;
-    background: linear-gradient(145deg, #050510, #0d0d1f);
-    border-radius: 12px;
+    background: #08080f;
+    border-radius: 14px;
     padding: 8px;
-    border: 1px solid #00ffcc33;
+    border: 1px solid #ffffff0d;
   }
+  .history::-webkit-scrollbar { width: 4px; }
+  .history::-webkit-scrollbar-thumb { background: #00ffe044; border-radius: 2px; }
+
   .history-item {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr 70px;
     align-items: center;
     padding: 12px 10px;
-    border-bottom: 1px solid #1a1a2e;
-    font-size: 13px;
+    border-bottom: 1px solid #ffffff08;
+    font-size: 12px;
     border-radius: 8px;
-    margin-bottom: 4px;
-    background: #0a0a15;
+    margin-bottom: 3px;
+    background: linear-gradient(90deg, #0d0d1a, #0a0a15);
+    transition: transform 0.2s;
+    animation: slideIn 0.3s ease;
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
   }
   .history-item:last-child { border-bottom: none; }
-  .h-issue { color: #666; font-size: 11px; font-family: monospace; }
-  .h-pred { color: #00ccff; font-weight: bold; }
-  .h-arrow { color: #666; }
-  .h-actual { color: #ffd700; font-weight: bold; }
-  .h-result { font-weight: bold; letter-spacing: 1px; }
+  .h-issue {
+    color: #555;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .h-pred {
+    color: #00c8ff;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .h-actual {
+    color: #ffd700;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .h-result {
+    text-align: right;
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
   .win-text { color: #00ff88; text-shadow: 0 0 8px #00ff88; }
-  .loss-text { color: #ff4466; text-shadow: 0 0 8px #ff4466; }
+  .loss-text { color: #ff3366; text-shadow: 0 0 8px #ff3366; }
+
+  .empty {
+    text-align: center;
+    color: #444;
+    padding: 30px 20px;
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+
+  /* ===== STATUS ===== */
   .status {
     text-align: center;
-    font-size: 11px;
-    color: #666;
-    margin-top: 10px;
+    font-size: 10px;
+    color: #555;
+    margin-top: 14px;
+    letter-spacing: 1px;
+    font-family: 'Courier New', monospace;
   }
+
   .loading {
-    color: #00ffcc;
-    font-size: 18px;
+    color: #00ffe0;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 3px;
     animation: pulse 1.5s infinite;
-    letter-spacing: 2px;
   }
   @keyframes pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-  .empty {
-    text-align: center;
-    color: #555;
-    padding: 25px;
-    font-size: 13px;
-    letter-spacing: 2px;
+    50% { opacity: 0.3; }
   }
 </style>
 </head>
 <body>
 
-<div class="header">SABET</div>
+<div class="header">
+  <div class="name">SABET</div>
+  <div class="sub">SIGNAL SYSTEM</div>
+</div>
 
 <div class="top-bar">
-  <div>
-    <span class="period-label">NEXT PERIOD</span>
+  <div class="col">
+    <span class="lbl">NEXT PERIOD</span>
     <span class="period" id="periodNum">----</span>
   </div>
-  <div>
-    <span class="timer-label">TIME LEFT</span>
+  <div class="col right">
+    <span class="lbl">TIME LEFT</span>
     <span class="timer" id="timerNum">--s</span>
   </div>
 </div>
 
 <div class="main-box">
-  <div class="label">SIGNAL</div>
-  <div id="signalBig" class="signal-big loading">LOADING...</div>
-  <div id="signalNum" class="signal-num">-</div>
-  <div id="signalColor" class="signal-color">-</div>
-  <div class="confidence">
-    ACCURACY: <span class="conf-value" id="confText">0%</span>
+  <div class="signal-label">SIGNAL</div>
+  <div id="signalBig" class="signal-big loading">WAIT...</div>
+  <div class="signal-num-wrap">
+    <div id="signalNum" class="signal-num">-</div>
+    <div id="signalEmoji" class="signal-emoji"></div>
   </div>
-  <div class="conf-bar"><div class="conf-fill" id="confFill"></div></div>
+  <div id="signalColor" class="signal-color">-</div>
+
+  <div class="accuracy-wrap">
+    <div class="accuracy-label">
+      <span>ACCURACY</span>
+      <span class="accuracy-value" id="confText">0%</span>
+    </div>
+    <div class="conf-bar"><div class="conf-fill" id="confFill"></div></div>
+  </div>
 </div>
 
 <div class="stats">
@@ -288,12 +441,12 @@
   </div>
 </div>
 
-<div class="section-title">
-  <span>📊 HISTORY</span>
-  <span class="count" id="histCount">0</span>
+<div class="hist-title">
+  <span class="txt">📊 HISTORY</span>
+  <span class="cnt" id="histCount">0</span>
 </div>
 <div class="history" id="history">
-  <div class="empty">No results yet</div>
+  <div class="empty">NO RESULTS YET</div>
 </div>
 
 <div class="status" id="status">Connecting...</div>
@@ -301,7 +454,7 @@
 <script>
 // ---------- CONFIG ----------
 const API = 'https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json?ts=';
-const REFRESH_MS = 5000;       // চেক প্রতি ৫ সেকেন্ড
+const REFRESH_MS = 5000;
 const PERIOD_SECONDS = 30;
 
 // ---------- STATE ----------
@@ -311,21 +464,21 @@ let winCount = 0, lossCount = 0;
 let historyData = [];
 let lastLossSignal = null;
 let lossStreak = 0;
-let nextPeriodNum = null;
 let periodEndTime = 0;
+let fetchOffset = 0;
 
 // ---------- COLOR MAP ----------
 const COLOR_MAP = {
-  0: { color: 'RED+VIOLET', emoji: '🔴🟣', type: 'SMALL' },
-  1: { color: 'GREEN',      emoji: '🟢',    type: 'SMALL' },
-  2: { color: 'RED',        emoji: '🔴',    type: 'SMALL' },
-  3: { color: 'GREEN',      emoji: '🟢',    type: 'SMALL' },
-  4: { color: 'RED',        emoji: '🔴',    type: 'SMALL' },
+  0: { color: 'RED+VIOLET',   emoji: '🔴🟣', type: 'SMALL' },
+  1: { color: 'GREEN',        emoji: '🟢',    type: 'SMALL' },
+  2: { color: 'RED',          emoji: '🔴',    type: 'SMALL' },
+  3: { color: 'GREEN',        emoji: '🟢',    type: 'SMALL' },
+  4: { color: 'RED',          emoji: '🔴',    type: 'SMALL' },
   5: { color: 'GREEN+VIOLET', emoji: '🟢🟣', type: 'BIG' },
-  6: { color: 'RED',        emoji: '🔴',    type: 'BIG' },
-  7: { color: 'GREEN',      emoji: '🟢',    type: 'BIG' },
-  8: { color: 'RED',        emoji: '🔴',    type: 'BIG' },
-  9: { color: 'GREEN',      emoji: '🟢',    type: 'BIG' }
+  6: { color: 'RED',          emoji: '🔴',    type: 'BIG' },
+  7: { color: 'GREEN',        emoji: '🟢',    type: 'BIG' },
+  8: { color: 'RED',          emoji: '🔴',    type: 'BIG' },
+  9: { color: 'GREEN',        emoji: '🟢',    type: 'BIG' }
 };
 
 // ---------- TIMER ----------
@@ -336,104 +489,82 @@ function updateTimer() {
   if (remain < 0) remain = 0;
   const el = document.getElementById('timerNum');
   el.textContent = remain + 's';
-  el.style.color = remain <= 5 ? '#ff4466' : '#ffd700';
-  if (remain <= 5) el.style.textShadow = '0 0 15px #ff4466';
-  else el.style.textShadow = '0 0 10px #ffd700';
+  if (remain <= 5) {
+    el.classList.add('danger');
+  } else {
+    el.classList.remove('danger');
+  }
 }
-setInterval(updateTimer, 500);
+setInterval(updateTimer, 300);
 
-// ---------- ANALYSIS (ENHANCED) ----------
+// ---------- ANALYSIS ----------
 function analyze(list) {
-  if (!list || list.length < 15) return null;
+  if (!list || list.length < 5) return null;
 
-  const recent = list.slice(0, 50).map(x => ({
+  const recent = list.slice(0, 15).map(x => ({
     num: parseInt(x.number),
     big: parseInt(x.number) >= 5,
     color: x.color
   }));
 
-  // Big/Small counts (last 30)
   let bigCount = 0, smallCount = 0;
-  recent.slice(0, 30).forEach(r => r.big ? bigCount++ : smallCount++);
+  recent.forEach(r => r.big ? bigCount++ : smallCount++);
 
-  // Current streak
   let currentStreak = 1;
   for (let i = 1; i < recent.length; i++) {
     if (recent[i].big === recent[0].big) currentStreak++;
     else break;
   }
 
-  // Last patterns
   const last5 = recent.slice(0, 5).map(r => r.big ? 'B' : 'S').join('');
   const last6 = recent.slice(0, 6).map(r => r.big ? 'B' : 'S').join('');
-  const last8 = recent.slice(0, 8).map(r => r.big ? 'B' : 'S').join('');
 
-  // Number frequency (last 30)
   const freq = {};
   for (let i = 0; i <= 9; i++) freq[i] = 0;
-  recent.slice(0, 30).forEach(r => freq[r.num]++);
+  recent.forEach(r => freq[r.num]++);
 
-  // Sort by least frequency
   let candidateNums = [];
   for (let i = 0; i <= 9; i++) candidateNums.push({ num: i, count: freq[i] });
   candidateNums.sort((a, b) => a.count - b.count);
 
-  // ---------- PREDICTION ----------
   let predictBig;
   let reason = '';
 
-  // 1. Loss recovery — FLIP
   if (lossStreak >= 1 && lastLossSignal !== null) {
     predictBig = !lastLossSignal;
     reason = 'recovery';
-  }
-  // 2. Long streak break (5+)
-  else if (currentStreak >= 5) {
+  } else if (currentStreak >= 5) {
     predictBig = !recent[0].big;
     reason = 'streak-break';
-  }
-  // 3. Alternating pattern BSBSB
-  else if (last5 === 'BSBSB' || last5 === 'SBSBS') {
+  } else if (last5 === 'BSBSB' || last5 === 'SBSBS') {
     predictBig = !recent[0].big;
     reason = 'alternate';
-  }
-  // 4. Double pattern BBSS or SSBB
-  else if (last6 === 'BBSSBB' || last6 === 'SSBBSS') {
+  } else if (last6 === 'BBSSBB' || last6 === 'SSBBSS') {
     predictBig = !recent[0].big;
     reason = 'pattern';
-  }
-  // 5. Imbalance correction
-  else if (bigCount > smallCount + 5) {
+  } else if (bigCount > smallCount + 3) {
     predictBig = false;
     reason = 'imbalance';
-  }
-  else if (smallCount > bigCount + 5) {
+  } else if (smallCount > bigCount + 3) {
     predictBig = true;
     reason = 'imbalance';
-  }
-  // 6. 3+ streak — 55% continue
-  else if (currentStreak >= 3) {
+  } else if (currentStreak >= 3) {
     predictBig = Math.random() < 0.55 ? recent[0].big : !recent[0].big;
     reason = 'streak-follow';
-  }
-  // 7. Random with slight bias
-  else {
+  } else {
     predictBig = Math.random() > 0.5;
     reason = 'random';
   }
 
-  // Number prediction
   const targetType = predictBig ? 'BIG' : 'SMALL';
   const validNums = candidateNums.filter(c => COLOR_MAP[c.num].type === targetType);
   let predictNum = validNums.length > 0 ? validNums[0].num : (predictBig ? 7 : 2);
 
-  // Confidence
   let conf = 58;
   if (currentStreak >= 5) conf += 18;
   else if (currentStreak >= 3) conf += 10;
-  if (Math.abs(bigCount - smallCount) > 5) conf += 12;
+  if (Math.abs(bigCount - smallCount) > 3) conf += 12;
   if (lossStreak >= 1) conf += 6;
-  if (reason === 'recovery') conf += 5;
   conf = Math.min(conf, 94);
 
   return {
@@ -466,20 +597,19 @@ async function fetchHistory() {
 function processData(list) {
   if (!list || list.length === 0) return;
   const latest = list[0];
-
-  // Calculate next period number and timer
   const currentIssue = latest.issueNumber;
-  const issueNum = parseInt(currentIssue);
-  nextPeriodNum = (issueNum + 1).toString();
 
-  // Timer sync — based on latest issue
+  // Next period number
+  const issueNum = parseInt(currentIssue);
+  const nextPeriod = (issueNum + 1).toString();
+  document.getElementById('periodNum').textContent = nextPeriod.slice(-4);
+
+  // Timer sync on new period
   if (lastIssue !== currentIssue) {
     periodEndTime = Date.now() + (PERIOD_SECONDS * 1000);
   }
 
-  document.getElementById('periodNum').textContent = nextPeriodNum.slice(-4);
-
-  // New round detection
+  // Result check
   if (lastIssue && lastIssue !== currentIssue) {
     if (lastPrediction) {
       const actualNum = parseInt(latest.number);
@@ -509,7 +639,6 @@ function processData(list) {
 
   lastIssue = currentIssue;
 
-  // Generate prediction
   const prediction = analyze(list);
   if (prediction) {
     lastPrediction = prediction;
@@ -518,21 +647,18 @@ function processData(list) {
 
   displayHistory();
   displayStats();
-  document.getElementById('status').textContent = '✅ Updated: ' + new Date().toLocaleTimeString();
+  document.getElementById('status').textContent = '✓ Updated: ' + new Date().toLocaleTimeString();
 }
 
 // ---------- DISPLAY ----------
 function displayPrediction(p) {
   const bigEl = document.getElementById('signalBig');
   bigEl.textContent = p.big ? 'BIG' : 'SMALL';
-  bigEl.style.color = p.big ? '#ff8844' : '#44aaff';
-  bigEl.classList.remove('loading');
+  bigEl.className = 'signal-big ' + (p.big ? 'big-color' : 'small-color');
 
   document.getElementById('signalNum').textContent = p.num;
-  document.getElementById('signalColor').textContent = p.emoji + ' ' + p.color;
-  document.getElementById('signalColor').style.color =
-    p.color.includes('GREEN') ? '#00ff88' :
-    p.color.includes('RED') ? '#ff4466' : '#ff00cc';
+  document.getElementById('signalEmoji').textContent = p.emoji;
+  document.getElementById('signalColor').textContent = p.color;
 
   document.getElementById('confText').textContent = p.confidence + '%';
   document.getElementById('confFill').style.width = p.confidence + '%';
@@ -548,14 +674,13 @@ function displayStats() {
 function displayHistory() {
   const hist = document.getElementById('history');
   if (historyData.length === 0) {
-    hist.innerHTML = '<div class="empty">No results yet</div>';
+    hist.innerHTML = '<div class="empty">NO RESULTS YET</div>';
     return;
   }
   hist.innerHTML = historyData.map(h => `
     <div class="history-item">
       <span class="h-issue">#${h.issue}</span>
       <span class="h-pred">${h.predicted}</span>
-      <span class="h-arrow">→</span>
       <span class="h-actual">${h.actual} ${h.actualBig}</span>
       <span class="h-result ${h.won ? 'win-text' : 'loss-text'}">
         ${h.won ? '✓ WIN' : '✗ LOSS'}
