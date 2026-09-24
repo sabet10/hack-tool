@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DK Win Hack Signal</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    min-height: 100vh;
+    padding: 15px;
+  }
+  .header {
+    text-align: center;
+    padding: 12px;
+    background: linear-gradient(90deg, #00ffcc, #00ccff);
+    color: #000;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px #00ffcc88;
+  }
+  .timer {
+    text-align: center;
+    font-size: 14px;
+    color: #00ffcc;
+    margin-bottom: 12px;
+  }
+  .main-box {
+    background: linear-gradient(145deg, #111, #1a1a2e);
+    border: 2px solid #00ffcc;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 25px #00ffcc55;
+    margin-bottom: 15px;
+  }
+  .label {
+    font-size: 13px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .signal-big {
+    font-size: 52px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-shadow: 0 0 20px currentColor;
+  }
+  .signal-num {
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffd700;
+    margin: 5px 0;
+    text-shadow: 0 0 15px #ffd700;
+  }
+  .signal-color {
+    font-size: 18px;
+    margin-top: 5px;
+  }
+  .confidence {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #aaa;
+  }
+  .conf-bar {
+    height: 8px;
+    background: #222;
+    border-radius: 4px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  .conf-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ffcc, #00ccff);
+    width: 0%;
+    transition: width 0.5s;
+  }
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+    font-size: 15px;
+  }
+  .stat-box {
+    background: #111;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    text-align: center;
+    min-width: 80px;
+  }
+  .stat-num {
+    font-size: 22px;
+    font-weight: bold;
+    display: block;
+  }
+  .win .stat-num { color: #00ff88; }
+  .loss .stat-num { color: #ff4466; }
+  .total .stat-num { color: #ffd700; }
+  .history-title {
+    color: #00ffcc;
+    font-size: 14px;
+    margin: 15px 0 8px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+  }
+  .history {
+    max-height: 300px;
+    overflow-y: auto;
+    background: #000;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #333;
+  }
+  .history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 13px;
+  }
+  .history-item:last-child { border-bottom: none; }
+  .status {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
+  }
+  .refresh-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #00ffcc, #00ccff);
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+  .loading {
+    color: #00ffcc;
+    font-size: 16px;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">⚡ DK WIN HACK SIGNAL ⚡</div>
+<div class="timer">🕐 প্রতি ৩০ সেকেন্ডে আপডেট</div>
+
+<div class="main-box">
+  <div class="label">সিগন্যাল</div>
+  <div id="signalBig" class="signal-big loading">লোড হচ্ছে...</div>
+  <div id="signalNum" class="signal-num">-</div>
+  <div id="signalColor" class="signal-color">-</div>
+  <div class="confidence" id="confText">কনফিডেন্স: 0%</div>
+  <div class="conf-bar"><div class="conf-fill" id="confFill"></div></div>
+</div>
+
+<div class="stats">
+  <div class="stat-box win">
+    <span class="stat-num" id="winCount">0</span>
+    <span>WIN</span>
+  </div>
+  <div class="stat-box loss">
+    <span class="stat-num" id="lossCount">0</span>
+    <span>LOSS</span>
+  </div>
+  <div class="stat-box total">
+    <span class="stat-num" id="totalCount">0</span>
+    <span>TOTAL</span>
+  </div>
+</div>
+
+<div class="history-title">📊 হিস্টোরি</div>
+<div class="history" id="history">
+  <div class="loading">ডেটা লোড হচ্ছে...</div>
+</div>
+
+<button class="refresh-btn" onclick="manualRefresh()">🔄 ম্যানুয়াল রিফ্রেশ</button>
+<div class="status" id="status">সংযোগ তৈরি হচ্ছে...</div>
+
+<script>
+// ---------- CONFIG ----------
+const API = 'https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json?ts=';
+const PROXY = 'https://api.allorigins.win/raw?url=';
+const REFRESH_MS = 30000;
+
+// ---------- VARIABLES ----------
+let lastIssue = null;
+let lastPrediction = null;
+let winCount = 0, lossCount = 0;
+let historyData = [];
+let sessionStart = Date.now();
+
+// ---------- COLOR MAP ----------
+const COLOR_MAP = {
+  0: { color: 'Red+Violet', emoji: '🔴🟣', type: 'Small' },
+  1: { color: 'Green',      emoji: '🟢',    type: 'Small' },
+  2: { color: 'Red',        emoji: '🔴',    type: 'Small' },
+  3: { color: 'Green',      emoji: '🟢',    type: 'Small' },
+  4: { color: 'Red',        emoji: '🔴',    type: 'Small' },
+  5: { color: 'Green+Violet', emoji: '🟢🟣', type: 'Big' },
+  6: { color: 'Red',        emoji: '🔴',    type: 'Big' },
+  7: { color: 'Green',      emoji: '🟢',    type: 'Big' },
+  8: { color: 'Red',        emoji: '🔴',    type: 'Big' },
+  9: { color: 'Green',      emoji: '🟢',    type: 'Big' }
+};
+
+// ---------- ANALYSIS ----------
+function analyze(list) {
+  if (!list || list.length < 5) return null;
+
+  // শেষ ২০ রাউন্ড
+  const recent = list.slice(0, 20).map(x => ({
+    num: parseInt(x.number),
+    big: parseInt(x.number) >= 5,
+    color: x.color
+  }));
+
+  // Big/Small কাউন্ট
+  let bigCount = 0, smallCount = 0;
+  recent.forEach(r => r.big ? bigCount++ : smallCount++);
+
+  // Big/Small স্ট্রিক
+  let currentStreak = 1;
+  for (let i = 1; i < recent.length; i++) {
+    if (recent[i].big === recent[0].big) currentStreak++;
+    else break;
+  }
+
+  // Number ফ্রিকোয়েন্সি
+  const freq = {};
+  for (let i = 0; i <= 9; i++) freq[i] = 0;
+  recent.forEach(r => freq[r.num]++);
+
+  // সবচেয়ে কম আসা নাম্বার খুঁজি (Late Number)
+  let candidateNums = [];
+  for (let i = 0; i <= 9; i++) {
+    candidateNums.push({ num: i, count: freq[i] });
+  }
+  candidateNums.sort((a, b) => a.count - b.count);
+
+  // Big/Small প্রেডিকশন
+  let predictBig;
+  if (currentStreak >= 4) {
+    predictBig = !recent[0].big; // স্ট্রিক ব্রেক হবে
+  } else if (bigCount > smallCount + 3) {
+    predictBig = false; // Small আসার সম্ভাবনা
+  } else if (smallCount > bigCount + 3) {
+    predictBig = true;  // Big আসার সম্ভাবনা
+  } else {
+    predictBig = Math.random() > 0.5;
+  }
+
+  // Number প্রেডিকশন
+  let predictNum;
+  const targetType = predictBig ? 'Big' : 'Small';
+  const validNums = candidateNums.filter(c => COLOR_MAP[c.num].type === targetType);
+  if (validNums.length > 0) {
+    predictNum = validNums[0].num;
+  } else {
+    predictNum = predictBig ? 7 : 2;
+  }
+
+  // কনফিডেন্স
+  let conf = 55 + Math.min(currentStreak * 3, 15) + Math.min(Math.abs(bigCount - smallCount), 15);
+  conf = Math.min(conf, 88);
+
+  return {
+    big: predictBig,
+    num: predictNum,
+    color: COLOR_MAP[predictNum].color,
+    emoji: COLOR_MAP[predictNum].emoji,
+    confidence: Math.round(conf),
+    streak: currentStreak
+  };
+}
+
+// ---------- FETCH ----------
+async function fetchHistory() {
+  try {
+    document.getElementById('status').textContent = 'ডেটা আনছি...';
+    const url = API + Date.now();
+    const res = await fetch(PROXY + encodeURIComponent(url));
+    const json = await res.json();
+
+    if (json && json.data && json.data.list) {
+      const list = json.data.list;
+      processData(list);
+    } else {
+      document.getElementById('status').textContent = 'ডেটা পাওয়া যায়নি';
+    }
+  } catch (e) {
+    document.getElementById('status').textContent = 'সংযোগ ব্যর্থ: ' + e.message;
+  }
+}
+
+// ---------- PROCESS ----------
+function processData(list) {
+  if (!list || list.length === 0) return;
+
+  const latest = list[0];
+
+  // নতুন রাউন্ড?
+  if (lastIssue && lastIssue !== latest.issueNumber) {
+    // আগের প্রেডিকশন চেক
+    if (lastPrediction) {
+      const actualNum = parseInt(latest.number);
+      const actualBig = actualNum >= 5;
+      const won = (actualBig === lastPrediction.big);
+      if (won) winCount++;
+      else lossCount++;
+
+      historyData.unshift({
+        issue: latest.issueNumber.slice(-4),
+        predicted: lastPrediction.big ? 'BIG' : 'SMALL',
+        predNum: lastPrediction.num,
+        actual: actualNum,
+        actualBig: actualBig ? 'BIG' : 'SMALL',
+        won: won
+      });
+      if (historyData.length > 30) historyData.pop();
+    }
+  }
+
+  lastIssue = latest.issueNumber;
+
+  // নতুন প্রেডিকশন
+  const prediction = analyze(list);
+  if (prediction) {
+    lastPrediction = prediction;
+    displayPrediction(prediction);
+  }
+
+  displayHistory();
+  displayStats();
+  document.getElementById('status').textContent = '✅ আপডেট: ' + new Date().toLocaleTimeString();
+}
+
+// ---------- DISPLAY ----------
+function displayPrediction(p) {
+  const bigEl = document.getElementById('signalBig');
+  bigEl.textContent = p.big ? '🔵 BIG' : '🔴 SMALL';
+  bigEl.style.color = p.big ? '#ff8844' : '#44aaff';
+  bigEl.classList.remove('loading');
+
+  document.getElementById('signalNum').textContent = p.num;
+  document.getElementById('signalColor').textContent = p.emoji + ' ' + p.color;
+
+  document.getElementById('confText').textContent = 'কনফিডেন্স: ' + p.confidence + '%';
+  document.getElementById('confFill').style.width = p.confidence + '%';
+}
+
+function displayStats() {
+  document.getElementById('winCount').textContent = winCount;
+  document.getElementById('lossCount').textContent = lossCount;
+  document.getElementById('totalCount').textContent = winCount + lossCount;
+}
+
+function displayHistory() {
+  const hist = document.getElementById('history');
+  if (historyData.length === 0) {
+    hist.innerHTML = '<div style="text-align:center;color:#666;padding:15px;">এখনো কোনো রেজাল্ট নেই</div>';
+    return;
+  }
+  hist.innerHTML = historyData.map(h => `
+    <div class="history-item">
+      <span style="color:#888;">#${h.issue}</span>
+      <span>${h.predicted} → ${h.actual} ${h.actualBig}</span>
+      <span style="color:${h.won ? '#00ff88' : '#ff4466'};font-weight:bold;">
+        ${h.won ? '✅ WIN' : '❌ LOSS'}
+      </span>
+    </div>
+  `).join('');
+}
+
+function manualRefresh() {
+  fetchHistory();
+}
+
+// ---------- START ----------
+setTimeout(fetchHistory, 1500);
+setInterval(fetchHistory, REFRESH_MS);
+
+</script>
+</body>
+  </html>
