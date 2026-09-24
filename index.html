@@ -9,9 +9,6 @@
   body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: #0a0a0a;
-    background-image:
-      radial-gradient(circle at 20% 10%, #1a003366 0%, transparent 50%),
-      radial-gradient(circle at 80% 90%, #00336666 0%, transparent 50%);
     color: #fff;
     min-height: 100vh;
     padding: 14px;
@@ -21,32 +18,22 @@
   /* ===== HEADER ===== */
   .header {
     text-align: center;
-    padding: 18px 10px;
-    margin-bottom: 14px;
-    position: relative;
+    padding: 14px 10px;
+    margin-bottom: 12px;
   }
   .header .name {
-    font-size: 38px;
+    font-size: 34px;
     font-weight: 900;
     letter-spacing: 8px;
-    background: linear-gradient(90deg, #00ffe0, #00b3ff, #b300ff, #ff00c8);
-    background-size: 300% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientMove 4s ease infinite;
-    text-shadow: 0 0 40px #00ffe055;
+    color: #00ffcc;
+    text-shadow: 0 0 25px #00ffcc;
   }
   .header .sub {
     font-size: 10px;
     letter-spacing: 6px;
-    color: #00ffe088;
+    color: #00ffcc66;
     margin-top: 4px;
     font-weight: 600;
-  }
-  @keyframes gradientMove {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
   }
 
   /* ===== TOP BAR ===== */
@@ -54,17 +41,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, #10101c, #1a1a2e);
-    border: 1px solid #00ffe033;
+    background: #111;
+    border: 1px solid #00ffcc33;
     border-radius: 14px;
     padding: 14px 18px;
-    margin-bottom: 14px;
-    box-shadow: 0 0 20px #00ffe015;
+    margin-bottom: 12px;
   }
-  .top-bar .col {
-    display: flex;
-    flex-direction: column;
-  }
+  .top-bar .col { display: flex; flex-direction: column; }
   .top-bar .col.right { align-items: flex-end; }
   .top-bar .lbl {
     font-size: 9px;
@@ -74,115 +57,76 @@
     font-weight: 700;
   }
   .top-bar .period {
-    color: #00ffe0;
+    color: #00ffcc;
     font-weight: 900;
-    font-size: 22px;
+    font-size: 20px;
     font-family: 'Courier New', monospace;
-    text-shadow: 0 0 15px #00ffe0;
+    text-shadow: 0 0 12px #00ffcc;
     letter-spacing: 2px;
   }
   .top-bar .timer {
     color: #ffd700;
     font-weight: 900;
-    font-size: 26px;
+    font-size: 24px;
     font-family: 'Courier New', monospace;
-    text-shadow: 0 0 15px #ffd700;
+    text-shadow: 0 0 12px #ffd700;
     letter-spacing: 2px;
-    transition: color 0.3s;
   }
   .top-bar .timer.danger {
-    color: #ff3366;
-    text-shadow: 0 0 20px #ff3366;
-    animation: blink 0.5s infinite;
-  }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    color: #ff4466;
+    text-shadow: 0 0 15px #ff4466;
   }
 
   /* ===== MAIN SIGNAL BOX ===== */
   .main-box {
-    position: relative;
-    background: linear-gradient(160deg, #0d0d1a, #14142a, #0d0d1a);
-    border-radius: 22px;
-    padding: 28px 20px 24px;
+    background: linear-gradient(145deg, #0d0d1f, #1a0033);
+    border: 2px solid #00ffcc;
+    border-radius: 18px;
+    padding: 24px 20px;
     text-align: center;
-    margin-bottom: 14px;
-    overflow: hidden;
-    box-shadow: 0 0 40px #00ffe022, inset 0 0 30px #00ffe008;
+    margin-bottom: 12px;
+    box-shadow: 0 0 30px #00ffcc44, inset 0 0 20px #00ffcc08;
   }
-  .main-box::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 22px;
-    padding: 2px;
-    background: linear-gradient(135deg, #00ffe0, #ff00c8, #00ffe0);
-    background-size: 300% 300%;
-    animation: borderFlow 6s linear infinite;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: 0;
-  }
-  @keyframes borderFlow {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 300% 300%; }
-  }
-  .main-box > * { position: relative; z-index: 2; }
-
   .signal-label {
-    font-size: 10px;
-    letter-spacing: 6px;
-    color: #00ffe0;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #00ffcc;
     font-weight: 800;
-    margin-bottom: 8px;
-    text-shadow: 0 0 10px #00ffe0;
+    margin-bottom: 6px;
   }
   .signal-big {
-    font-size: 64px;
+    font-size: 60px;
     font-weight: 900;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     margin: 8px 0;
     line-height: 1;
-    transition: all 0.4s;
+    transition: color 0.3s, text-shadow 0.3s;
   }
   .signal-big.big-color {
     color: #ff9d3d;
-    text-shadow: 0 0 40px #ff9d3d, 0 0 80px #ff9d3d55;
-    animation: glowOrange 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 35px #ff9d3d;
   }
   .signal-big.small-color {
     color: #4fc3ff;
-    text-shadow: 0 0 40px #4fc3ff, 0 0 80px #4fc3ff55;
-    animation: glowBlue 2s ease-in-out infinite alternate;
-  }
-  @keyframes glowOrange {
-    from { text-shadow: 0 0 30px #ff9d3d, 0 0 60px #ff9d3d44; }
-    to { text-shadow: 0 0 50px #ff9d3d, 0 0 90px #ff9d3d66; }
-  }
-  @keyframes glowBlue {
-    from { text-shadow: 0 0 30px #4fc3ff, 0 0 60px #4fc3ff44; }
-    to { text-shadow: 0 0 50px #4fc3ff, 0 0 90px #4fc3ff66; }
+    text-shadow: 0 0 35px #4fc3ff;
   }
   .signal-num-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    margin: 8px 0;
+    gap: 10px;
+    margin: 6px 0;
   }
   .signal-num {
-    font-size: 54px;
+    font-size: 50px;
     font-weight: 900;
     color: #ffd700;
     font-family: 'Courier New', monospace;
-    text-shadow: 0 0 30px #ffd700;
+    text-shadow: 0 0 25px #ffd700;
     line-height: 1;
   }
   .signal-emoji {
-    font-size: 32px;
-    filter: drop-shadow(0 0 10px currentColor);
+    font-size: 30px;
   }
   .signal-color {
     font-size: 15px;
@@ -194,7 +138,7 @@
 
   /* ===== ACCURACY ===== */
   .accuracy-wrap {
-    margin-top: 20px;
+    margin-top: 18px;
   }
   .accuracy-label {
     display: flex;
@@ -207,60 +151,41 @@
     font-weight: 700;
   }
   .accuracy-value {
-    color: #00ffe0;
-    font-size: 22px;
+    color: #00ffcc;
+    font-size: 20px;
     font-weight: 900;
-    text-shadow: 0 0 15px #00ffe0;
+    text-shadow: 0 0 12px #00ffcc;
     font-family: 'Courier New', monospace;
   }
   .conf-bar {
     height: 10px;
-    background: #0a0a12;
+    background: #000;
     border-radius: 5px;
     overflow: hidden;
-    border: 1px solid #00ffe033;
-    box-shadow: inset 0 0 10px #000;
+    border: 1px solid #00ffcc33;
   }
   .conf-fill {
     height: 100%;
-    background: linear-gradient(90deg, #00ffe0, #00b3ff, #b300ff);
-    background-size: 200% 100%;
+    background: linear-gradient(90deg, #00ffcc, #00ccff);
     width: 0%;
-    transition: width 0.7s ease;
-    box-shadow: 0 0 15px #00ffe0;
-    animation: fillFlow 3s linear infinite;
-  }
-  @keyframes fillFlow {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
+    transition: width 0.6s ease;
+    box-shadow: 0 0 12px #00ffcc;
   }
 
   /* ===== STATS ===== */
   .stats {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 16px;
+    gap: 8px;
+    margin-bottom: 14px;
   }
   .stat-box {
-    background: linear-gradient(145deg, #10101c, #1a1a2e);
+    background: #111;
     padding: 14px 6px;
-    border-radius: 14px;
+    border-radius: 12px;
     text-align: center;
     border: 1px solid #ffffff11;
-    position: relative;
-    overflow: hidden;
   }
-  .stat-box::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .stat-box.win::after { background: #00ff88; box-shadow: 0 0 10px #00ff88; }
-  .stat-box.loss::after { background: #ff3366; box-shadow: 0 0 10px #ff3366; }
-  .stat-box.total::after { background: #ffd700; box-shadow: 0 0 10px #ffd700; }
-
   .stat-num {
     font-size: 26px;
     font-weight: 900;
@@ -269,7 +194,7 @@
     line-height: 1;
   }
   .stat-box.win .stat-num { color: #00ff88; text-shadow: 0 0 12px #00ff88; }
-  .stat-box.loss .stat-num { color: #ff3366; text-shadow: 0 0 12px #ff3366; }
+  .stat-box.loss .stat-num { color: #ff4466; text-shadow: 0 0 12px #ff4466; }
   .stat-box.total .stat-num { color: #ffd700; text-shadow: 0 0 12px #ffd700; }
   .stat-label {
     font-size: 9px;
@@ -284,80 +209,67 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     padding: 0 4px;
   }
   .hist-title .txt {
-    color: #00ffe0;
+    color: #00ffcc;
     font-size: 11px;
     letter-spacing: 4px;
     font-weight: 800;
   }
   .hist-title .cnt {
-    background: #00ffe022;
-    color: #00ffe0;
+    background: #00ffcc22;
+    color: #00ffcc;
     font-size: 12px;
     font-weight: 900;
-    padding: 4px 12px;
+    padding: 3px 12px;
     border-radius: 10px;
-    border: 1px solid #00ffe044;
+    border: 1px solid #00ffcc44;
     font-family: 'Courier New', monospace;
   }
   .history {
     max-height: 340px;
     overflow-y: auto;
-    background: #08080f;
-    border-radius: 14px;
+    background: #0a0a15;
+    border-radius: 12px;
     padding: 8px;
     border: 1px solid #ffffff0d;
   }
-  .history::-webkit-scrollbar { width: 4px; }
-  .history::-webkit-scrollbar-thumb { background: #00ffe044; border-radius: 2px; }
-
   .history-item {
     display: grid;
-    grid-template-columns: 60px 1fr 1fr 70px;
+    grid-template-columns: 60px 1fr 1fr 65px;
     align-items: center;
-    padding: 12px 10px;
+    padding: 11px 10px;
     border-bottom: 1px solid #ffffff08;
     font-size: 12px;
-    border-radius: 8px;
+    border-radius: 6px;
     margin-bottom: 3px;
-    background: linear-gradient(90deg, #0d0d1a, #0a0a15);
-    transition: transform 0.2s;
-    animation: slideIn 0.3s ease;
+    background: #0d0d1a;
   }
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-10px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  .history-item:last-child { border-bottom: none; }
   .h-issue {
-    color: #555;
+    color: #666;
     font-family: 'Courier New', monospace;
     font-size: 11px;
     font-weight: 700;
   }
   .h-pred {
-    color: #00c8ff;
+    color: #00ccff;
     font-weight: 800;
     font-size: 12px;
-    letter-spacing: 1px;
   }
   .h-actual {
     color: #ffd700;
     font-weight: 800;
     font-size: 12px;
-    letter-spacing: 1px;
   }
   .h-result {
     text-align: right;
     font-weight: 900;
     font-size: 11px;
-    letter-spacing: 1px;
   }
-  .win-text { color: #00ff88; text-shadow: 0 0 8px #00ff88; }
-  .loss-text { color: #ff3366; text-shadow: 0 0 8px #ff3366; }
+  .win-text { color: #00ff88; text-shadow: 0 0 6px #00ff88; }
+  .loss-text { color: #ff4466; text-shadow: 0 0 6px #ff4466; }
 
   .empty {
     text-align: center;
@@ -367,26 +279,24 @@
     letter-spacing: 3px;
   }
 
-  /* ===== STATUS ===== */
   .status {
     text-align: center;
     font-size: 10px;
     color: #555;
-    margin-top: 14px;
-    letter-spacing: 1px;
+    margin-top: 12px;
     font-family: 'Courier New', monospace;
   }
 
   .loading {
-    color: #00ffe0;
-    font-size: 24px;
+    color: #00ffcc;
+    font-size: 22px;
     font-weight: 900;
     letter-spacing: 3px;
     animation: pulse 1.5s infinite;
   }
   @keyframes pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+    50% { opacity: 0.4; }
   }
 </style>
 </head>
@@ -454,7 +364,7 @@
 <script>
 // ---------- CONFIG ----------
 const API = 'https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json?ts=';
-const REFRESH_MS = 5000;
+const REFRESH_MS = 3000;
 const PERIOD_SECONDS = 30;
 
 // ---------- STATE ----------
@@ -465,7 +375,8 @@ let historyData = [];
 let lastLossSignal = null;
 let lossStreak = 0;
 let periodEndTime = 0;
-let fetchOffset = 0;
+let lastPredictedNum = null;
+let lastPredictedBig = null;
 
 // ---------- COLOR MAP ----------
 const COLOR_MAP = {
@@ -489,19 +400,16 @@ function updateTimer() {
   if (remain < 0) remain = 0;
   const el = document.getElementById('timerNum');
   el.textContent = remain + 's';
-  if (remain <= 5) {
-    el.classList.add('danger');
-  } else {
-    el.classList.remove('danger');
-  }
+  if (remain <= 5) el.classList.add('danger');
+  else el.classList.remove('danger');
 }
-setInterval(updateTimer, 300);
+setInterval(updateTimer, 250);
 
 // ---------- ANALYSIS ----------
 function analyze(list) {
-  if (!list || list.length < 5) return null;
+  if (!list || list.length < 8) return null;
 
-  const recent = list.slice(0, 15).map(x => ({
+  const recent = list.slice(0, 20).map(x => ({
     num: parseInt(x.number),
     big: parseInt(x.number) >= 5,
     color: x.color
@@ -518,54 +426,88 @@ function analyze(list) {
 
   const last5 = recent.slice(0, 5).map(r => r.big ? 'B' : 'S').join('');
   const last6 = recent.slice(0, 6).map(r => r.big ? 'B' : 'S').join('');
+  const last8 = recent.slice(0, 8).map(r => r.big ? 'B' : 'S').join('');
 
+  // Number frequency
   const freq = {};
   for (let i = 0; i <= 9; i++) freq[i] = 0;
   recent.forEach(r => freq[r.num]++);
 
+  // Sort by least frequency
   let candidateNums = [];
   for (let i = 0; i <= 9; i++) candidateNums.push({ num: i, count: freq[i] });
   candidateNums.sort((a, b) => a.count - b.count);
 
+  // ---------- PREDICTION ----------
   let predictBig;
   let reason = '';
 
+  // Loss recovery: flip direction
   if (lossStreak >= 1 && lastLossSignal !== null) {
     predictBig = !lastLossSignal;
     reason = 'recovery';
-  } else if (currentStreak >= 5) {
+  }
+  // Long streak break
+  else if (currentStreak >= 6) {
     predictBig = !recent[0].big;
     reason = 'streak-break';
-  } else if (last5 === 'BSBSB' || last5 === 'SBSBS') {
+  }
+  // Alternating
+  else if (last5 === 'BSBSB' || last5 === 'SBSBS') {
     predictBig = !recent[0].big;
     reason = 'alternate';
-  } else if (last6 === 'BBSSBB' || last6 === 'SSBBSS') {
+  }
+  // Pattern
+  else if (last6 === 'BBSSBB' || last6 === 'SSBBSS') {
     predictBig = !recent[0].big;
     reason = 'pattern';
-  } else if (bigCount > smallCount + 3) {
+  }
+  // Imbalance
+  else if (bigCount > smallCount + 4) {
     predictBig = false;
     reason = 'imbalance';
-  } else if (smallCount > bigCount + 3) {
+  }
+  else if (smallCount > bigCount + 4) {
     predictBig = true;
     reason = 'imbalance';
-  } else if (currentStreak >= 3) {
-    predictBig = Math.random() < 0.55 ? recent[0].big : !recent[0].big;
-    reason = 'streak-follow';
-  } else {
+  }
+  // Streak follow (3-5)
+  else if (currentStreak >= 3) {
+    predictBig = Math.random() < 0.5 ? recent[0].big : !recent[0].big;
+    reason = 'streak';
+  }
+  else {
     predictBig = Math.random() > 0.5;
     reason = 'random';
   }
 
+  // Force different number if same as last time (prevent repeat)
   const targetType = predictBig ? 'BIG' : 'SMALL';
   const validNums = candidateNums.filter(c => COLOR_MAP[c.num].type === targetType);
-  let predictNum = validNums.length > 0 ? validNums[0].num : (predictBig ? 7 : 2);
 
-  let conf = 58;
-  if (currentStreak >= 5) conf += 18;
-  else if (currentStreak >= 3) conf += 10;
-  if (Math.abs(bigCount - smallCount) > 3) conf += 12;
-  if (lossStreak >= 1) conf += 6;
-  conf = Math.min(conf, 94);
+  let predictNum;
+  if (validNums.length > 0) {
+    // Skip last predicted number if possible
+    const filtered = validNums.filter(c => c.num !== lastPredictedNum);
+    predictNum = (filtered.length > 0 ? filtered[0] : validNums[0]).num;
+  } else {
+    predictNum = predictBig ? 7 : 2;
+  }
+
+  // If same Big/Small as last prediction AND same reason → force change
+  if (predictBig === lastPredictedBig && reason === 'random' && validNums.length > 1) {
+    predictNum = validNums[1].num;
+  }
+
+  // Confidence
+  let conf = 60;
+  if (currentStreak >= 6) conf += 20;
+  else if (currentStreak >= 4) conf += 12;
+  else if (currentStreak >= 3) conf += 6;
+  if (Math.abs(bigCount - smallCount) > 4) conf += 10;
+  if (reason === 'recovery') conf += 8;
+  if (reason === 'alternate') conf += 5;
+  conf = Math.min(conf, 92);
 
   return {
     big: predictBig,
@@ -599,18 +541,14 @@ function processData(list) {
   const latest = list[0];
   const currentIssue = latest.issueNumber;
 
-  // Next period number
-  const issueNum = parseInt(currentIssue);
-  const nextPeriod = (issueNum + 1).toString();
-  document.getElementById('periodNum').textContent = nextPeriod.slice(-4);
+  // Check if new period
+  const isNewPeriod = (lastIssue !== null && lastIssue !== currentIssue);
 
-  // Timer sync on new period
-  if (lastIssue !== currentIssue) {
+  if (isNewPeriod) {
+    // New period - reset timer
     periodEndTime = Date.now() + (PERIOD_SECONDS * 1000);
-  }
 
-  // Result check
-  if (lastIssue && lastIssue !== currentIssue) {
+    // Check last prediction result
     if (lastPrediction) {
       const actualNum = parseInt(latest.number);
       const actualBig = actualNum >= 5;
@@ -635,18 +573,41 @@ function processData(list) {
       });
       if (historyData.length > 50) historyData.pop();
     }
+
+    lastIssue = currentIssue;
+
+    // Generate new prediction
+    const prediction = analyze(list);
+    if (prediction) {
+      lastPrediction = prediction;
+      lastPredictedNum = prediction.num;
+      lastPredictedBig = prediction.big;
+      displayPrediction(prediction);
+    }
+
+    displayHistory();
+    displayStats();
+  } else if (lastIssue === null) {
+    // First time
+    lastIssue = currentIssue;
+    periodEndTime = Date.now() + (PERIOD_SECONDS * 1000);
+
+    const prediction = analyze(list);
+    if (prediction) {
+      lastPrediction = prediction;
+      lastPredictedNum = prediction.num;
+      lastPredictedBig = prediction.big;
+      displayPrediction(prediction);
+    }
+    displayHistory();
+    displayStats();
   }
 
-  lastIssue = currentIssue;
+  // Update NEXT PERIOD number
+  const issueNum = parseInt(currentIssue);
+  const nextPeriod = (issueNum + 1).toString();
+  document.getElementById('periodNum').textContent = nextPeriod.slice(-4);
 
-  const prediction = analyze(list);
-  if (prediction) {
-    lastPrediction = prediction;
-    displayPrediction(prediction);
-  }
-
-  displayHistory();
-  displayStats();
   document.getElementById('status').textContent = '✓ Updated: ' + new Date().toLocaleTimeString();
 }
 
@@ -690,8 +651,8 @@ function displayHistory() {
 }
 
 // ---------- START ----------
-setTimeout(fetchHistory, 1000);
+setTimeout(fetchHistory, 800);
 setInterval(fetchHistory, REFRESH_MS);
 </script>
 </body>
-</html>
+     </html>
