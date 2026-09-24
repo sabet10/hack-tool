@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DK Win Hack Signal</title>
+<title>SABET Signal</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -15,43 +15,52 @@
   }
   .header {
     text-align: center;
-    padding: 14px;
+    padding: 16px;
     background: linear-gradient(90deg, #ff00cc, #00ffcc);
     color: #000;
     border-radius: 14px;
-    font-weight: bold;
-    font-size: 22px;
+    font-weight: 900;
+    font-size: 26px;
     margin-bottom: 10px;
     box-shadow: 0 0 30px #ff00cc88;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
   }
   .top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #111;
+    background: linear-gradient(90deg, #0d0d1f, #1a0033);
     border: 1px solid #00ffcc55;
     border-radius: 12px;
-    padding: 10px 14px;
+    padding: 12px 16px;
     margin-bottom: 12px;
     font-size: 13px;
+    box-shadow: 0 0 15px #00ffcc22;
   }
+  .top-bar .period-label { color: #888; font-size: 11px; }
   .top-bar .period {
     color: #00ffcc;
     font-weight: bold;
+    font-size: 16px;
+    display: block;
+    text-shadow: 0 0 10px #00ffcc;
   }
+  .top-bar .timer-label { color: #888; font-size: 11px; text-align: right; }
   .top-bar .timer {
     color: #ffd700;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 22px;
+    display: block;
+    text-shadow: 0 0 10px #ffd700;
+    font-family: 'Courier New', monospace;
   }
   .main-box {
     background: linear-gradient(145deg, #0d0d1f, #1a0033);
     border: 2px solid #00ffcc;
     border-radius: 18px;
-    padding: 22px;
+    padding: 24px;
     text-align: center;
-    box-shadow: 0 0 30px #00ffcc55, inset 0 0 20px #00ffcc11;
+    box-shadow: 0 0 35px #00ffcc55, inset 0 0 25px #00ffcc11;
     margin-bottom: 12px;
     position: relative;
     overflow: hidden;
@@ -62,7 +71,7 @@
     top: -50%; left: -50%;
     width: 200%; height: 200%;
     background: conic-gradient(from 0deg, transparent, #00ffcc33, transparent, #ff00cc33, transparent);
-    animation: rotate 6s linear infinite;
+    animation: rotate 8s linear infinite;
     z-index: 0;
   }
   @keyframes rotate {
@@ -74,47 +83,68 @@
     font-size: 12px;
     color: #ff00cc;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     font-weight: bold;
   }
   .signal-big {
-    font-size: 56px;
+    font-size: 60px;
     font-weight: 900;
-    margin: 8px 0;
-    text-shadow: 0 0 25px currentColor;
-    letter-spacing: 2px;
+    margin: 10px 0;
+    text-shadow: 0 0 30px currentColor;
+    letter-spacing: 3px;
   }
   .signal-num {
-    font-size: 44px;
+    font-size: 52px;
     font-weight: 900;
     color: #ffd700;
     margin: 4px 0;
-    text-shadow: 0 0 20px #ffd700;
+    text-shadow: 0 0 25px #ffd700;
+    font-family: 'Courier New', monospace;
   }
   .signal-color {
     font-size: 18px;
-    margin-top: 6px;
+    margin-top: 8px;
     font-weight: bold;
+    letter-spacing: 1px;
   }
   .confidence {
-    margin-top: 14px;
-    font-size: 13px;
+    margin-top: 16px;
+    font-size: 14px;
     color: #ccc;
+    font-weight: bold;
+  }
+  .conf-value {
+    color: #00ffcc;
+    font-size: 20px;
+    text-shadow: 0 0 10px #00ffcc;
   }
   .conf-bar {
-    height: 10px;
-    background: #222;
-    border-radius: 5px;
-    margin-top: 8px;
+    height: 12px;
+    background: #111;
+    border-radius: 6px;
+    margin-top: 10px;
     overflow: hidden;
     border: 1px solid #333;
+    position: relative;
   }
   .conf-fill {
     height: 100%;
     background: linear-gradient(90deg, #00ffcc, #ff00cc);
     width: 0%;
-    transition: width 0.6s;
-    box-shadow: 0 0 10px #00ffcc;
+    transition: width 0.8s ease;
+    box-shadow: 0 0 15px #00ffcc;
+    position: relative;
+  }
+  .conf-fill::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, transparent, #fff5, transparent);
+    animation: shine 2s infinite;
+  }
+  @keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
   }
   .stats {
     display: flex;
@@ -125,22 +155,24 @@
   .stat-box {
     flex: 1;
     background: linear-gradient(145deg, #0d0d1f, #1a0033);
-    padding: 12px 8px;
+    padding: 14px 8px;
     border-radius: 12px;
     border: 1px solid #00ffcc44;
     text-align: center;
-    box-shadow: 0 0 10px #00ffcc22;
+    box-shadow: 0 0 12px #00ffcc22;
   }
   .stat-num {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 900;
     display: block;
-    text-shadow: 0 0 10px currentColor;
+    text-shadow: 0 0 12px currentColor;
+    font-family: 'Courier New', monospace;
   }
   .stat-label {
     font-size: 11px;
     color: #aaa;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    margin-top: 4px;
   }
   .win .stat-num { color: #00ff88; }
   .loss .stat-num { color: #ff4466; }
@@ -149,7 +181,7 @@
     color: #00ffcc;
     font-size: 13px;
     margin: 14px 0 8px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
@@ -157,10 +189,14 @@
   }
   .section-title .count {
     color: #ffd700;
-    font-size: 12px;
+    font-size: 14px;
+    background: #1a0033;
+    padding: 2px 10px;
+    border-radius: 10px;
+    border: 1px solid #ffd70055;
   }
   .history {
-    max-height: 320px;
+    max-height: 340px;
     overflow-y: auto;
     background: linear-gradient(145deg, #050510, #0d0d1f);
     border-radius: 12px;
@@ -171,56 +207,32 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 12px 10px;
     border-bottom: 1px solid #1a1a2e;
-    font-size: 12px;
-    border-radius: 6px;
+    font-size: 13px;
+    border-radius: 8px;
     margin-bottom: 4px;
+    background: #0a0a15;
   }
   .history-item:last-child { border-bottom: none; }
-  .h-issue { color: #888; font-size: 11px; }
-  .h-pred { color: #00ccff; }
-  .h-actual { color: #ffd700; }
-  .h-result { font-weight: bold; }
-  .win-text { color: #00ff88; }
-  .loss-text { color: #ff4466; }
+  .h-issue { color: #666; font-size: 11px; font-family: monospace; }
+  .h-pred { color: #00ccff; font-weight: bold; }
+  .h-arrow { color: #666; }
+  .h-actual { color: #ffd700; font-weight: bold; }
+  .h-result { font-weight: bold; letter-spacing: 1px; }
+  .win-text { color: #00ff88; text-shadow: 0 0 8px #00ff88; }
+  .loss-text { color: #ff4466; text-shadow: 0 0 8px #ff4466; }
   .status {
     text-align: center;
     font-size: 11px;
     color: #666;
-    margin-top: 8px;
-  }
-  .btn-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-  }
-  .btn {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    letter-spacing: 1px;
-  }
-  .btn-refresh {
-    background: linear-gradient(90deg, #00ffcc, #00ccff);
-    color: #000;
-  }
-  .btn-stop {
-    background: linear-gradient(90deg, #ff4466, #ff00cc);
-    color: #fff;
-  }
-  .btn-start {
-    background: linear-gradient(90deg, #00ff88, #00ffcc);
-    color: #000;
+    margin-top: 10px;
   }
   .loading {
     color: #00ffcc;
-    font-size: 16px;
+    font-size: 18px;
     animation: pulse 1.5s infinite;
+    letter-spacing: 2px;
   }
   @keyframes pulse {
     0%, 100% { opacity: 1; }
@@ -229,18 +241,25 @@
   .empty {
     text-align: center;
     color: #555;
-    padding: 20px;
+    padding: 25px;
     font-size: 13px;
+    letter-spacing: 2px;
   }
 </style>
 </head>
 <body>
 
-<div class="header">⚡ DK WIN HACK ⚡</div>
+<div class="header">SABET</div>
 
 <div class="top-bar">
-  <div>PERIOD: <span class="period" id="periodNum">----</span></div>
-  <div>TIME: <span class="timer" id="timerNum">--s</span></div>
+  <div>
+    <span class="period-label">NEXT PERIOD</span>
+    <span class="period" id="periodNum">----</span>
+  </div>
+  <div>
+    <span class="timer-label">TIME LEFT</span>
+    <span class="timer" id="timerNum">--s</span>
+  </div>
 </div>
 
 <div class="main-box">
@@ -248,7 +267,9 @@
   <div id="signalBig" class="signal-big loading">LOADING...</div>
   <div id="signalNum" class="signal-num">-</div>
   <div id="signalColor" class="signal-color">-</div>
-  <div class="confidence" id="confText">Confidence: 0%</div>
+  <div class="confidence">
+    ACCURACY: <span class="conf-value" id="confText">0%</span>
+  </div>
   <div class="conf-bar"><div class="conf-fill" id="confFill"></div></div>
 </div>
 
@@ -275,17 +296,12 @@
   <div class="empty">No results yet</div>
 </div>
 
-<div class="btn-row">
-  <button class="btn btn-refresh" id="refreshBtn" onclick="manualRefresh()">🔄 REFRESH</button>
-  <button class="btn btn-stop" id="stopBtn" onclick="toggleStop()">⏸ STOP</button>
-</div>
-
 <div class="status" id="status">Connecting...</div>
 
 <script>
 // ---------- CONFIG ----------
 const API = 'https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json?ts=';
-const REFRESH_MS = 30000;
+const REFRESH_MS = 5000;       // চেক প্রতি ৫ সেকেন্ড
 const PERIOD_SECONDS = 30;
 
 // ---------- STATE ----------
@@ -293,12 +309,10 @@ let lastIssue = null;
 let lastPrediction = null;
 let winCount = 0, lossCount = 0;
 let historyData = [];
-let recentResults = [];
-let running = true;
-let lastFetchTime = 0;
-let periodEndTime = 0;
 let lastLossSignal = null;
 let lossStreak = 0;
+let nextPeriodNum = null;
+let periodEndTime = 0;
 
 // ---------- COLOR MAP ----------
 const COLOR_MAP = {
@@ -320,28 +334,27 @@ function updateTimer() {
   const now = Date.now();
   let remain = Math.ceil((periodEndTime - now) / 1000);
   if (remain < 0) remain = 0;
-  document.getElementById('timerNum').textContent = remain + 's';
-  if (remain <= 5) {
-    document.getElementById('timerNum').style.color = '#ff4466';
-  } else {
-    document.getElementById('timerNum').style.color = '#ffd700';
-  }
+  const el = document.getElementById('timerNum');
+  el.textContent = remain + 's';
+  el.style.color = remain <= 5 ? '#ff4466' : '#ffd700';
+  if (remain <= 5) el.style.textShadow = '0 0 15px #ff4466';
+  else el.style.textShadow = '0 0 10px #ffd700';
 }
 setInterval(updateTimer, 500);
 
-// ---------- ANALYSIS (IMPROVED) ----------
+// ---------- ANALYSIS (ENHANCED) ----------
 function analyze(list) {
-  if (!list || list.length < 10) return null;
+  if (!list || list.length < 15) return null;
 
-  const recent = list.slice(0, 30).map(x => ({
+  const recent = list.slice(0, 50).map(x => ({
     num: parseInt(x.number),
     big: parseInt(x.number) >= 5,
     color: x.color
   }));
 
-  // Big/Small counts
+  // Big/Small counts (last 30)
   let bigCount = 0, smallCount = 0;
-  recent.slice(0, 20).forEach(r => r.big ? bigCount++ : smallCount++);
+  recent.slice(0, 30).forEach(r => r.big ? bigCount++ : smallCount++);
 
   // Current streak
   let currentStreak = 1;
@@ -350,66 +363,78 @@ function analyze(list) {
     else break;
   }
 
-  // Last 5 pattern
+  // Last patterns
   const last5 = recent.slice(0, 5).map(r => r.big ? 'B' : 'S').join('');
-  const last10 = recent.slice(0, 10).map(r => r.big ? 'B' : 'S').join('');
+  const last6 = recent.slice(0, 6).map(r => r.big ? 'B' : 'S').join('');
+  const last8 = recent.slice(0, 8).map(r => r.big ? 'B' : 'S').join('');
 
-  // Number frequency
+  // Number frequency (last 30)
   const freq = {};
   for (let i = 0; i <= 9; i++) freq[i] = 0;
-  recent.forEach(r => freq[r.num]++);
+  recent.slice(0, 30).forEach(r => freq[r.num]++);
 
-  // Sort by least frequent
+  // Sort by least frequency
   let candidateNums = [];
   for (let i = 0; i <= 9; i++) candidateNums.push({ num: i, count: freq[i] });
   candidateNums.sort((a, b) => a.count - b.count);
 
-  // ---------- PREDICTION LOGIC ----------
+  // ---------- PREDICTION ----------
   let predictBig;
+  let reason = '';
 
-  // Loss recovery: if last was loss, FLIP signal
-  if (lastLossSignal !== null && lossStreak > 0) {
+  // 1. Loss recovery — FLIP
+  if (lossStreak >= 1 && lastLossSignal !== null) {
     predictBig = !lastLossSignal;
+    reason = 'recovery';
   }
-  // Long streak = break
+  // 2. Long streak break (5+)
   else if (currentStreak >= 5) {
     predictBig = !recent[0].big;
+    reason = 'streak-break';
   }
-  else if (currentStreak >= 3) {
-    // 3+ streak → 60% chance to continue, 40% break
-    predictBig = Math.random() < 0.4 ? !recent[0].big : recent[0].big;
-  }
-  else if (bigCount > smallCount + 4) {
-    predictBig = false;
-  }
-  else if (smallCount > bigCount + 4) {
-    predictBig = true;
-  }
-  // Pattern detection
+  // 3. Alternating pattern BSBSB
   else if (last5 === 'BSBSB' || last5 === 'SBSBS') {
     predictBig = !recent[0].big;
+    reason = 'alternate';
   }
+  // 4. Double pattern BBSS or SSBB
+  else if (last6 === 'BBSSBB' || last6 === 'SSBBSS') {
+    predictBig = !recent[0].big;
+    reason = 'pattern';
+  }
+  // 5. Imbalance correction
+  else if (bigCount > smallCount + 5) {
+    predictBig = false;
+    reason = 'imbalance';
+  }
+  else if (smallCount > bigCount + 5) {
+    predictBig = true;
+    reason = 'imbalance';
+  }
+  // 6. 3+ streak — 55% continue
+  else if (currentStreak >= 3) {
+    predictBig = Math.random() < 0.55 ? recent[0].big : !recent[0].big;
+    reason = 'streak-follow';
+  }
+  // 7. Random with slight bias
   else {
     predictBig = Math.random() > 0.5;
+    reason = 'random';
   }
 
-  // Number prediction - pick least frequent matching type
+  // Number prediction
   const targetType = predictBig ? 'BIG' : 'SMALL';
   const validNums = candidateNums.filter(c => COLOR_MAP[c.num].type === targetType);
-  let predictNum;
-  if (validNums.length > 0) {
-    predictNum = validNums[0].num;
-  } else {
-    predictNum = predictBig ? 7 : 2;
-  }
+  let predictNum = validNums.length > 0 ? validNums[0].num : (predictBig ? 7 : 2);
 
   // Confidence
-  let conf = 60;
-  if (currentStreak >= 5) conf += 15;
-  else if (currentStreak >= 3) conf += 8;
-  if (Math.abs(bigCount - smallCount) > 4) conf += 10;
-  if (lossStreak > 0) conf += 5;
-  conf = Math.min(conf, 92);
+  let conf = 58;
+  if (currentStreak >= 5) conf += 18;
+  else if (currentStreak >= 3) conf += 10;
+  if (Math.abs(bigCount - smallCount) > 5) conf += 12;
+  if (lossStreak >= 1) conf += 6;
+  if (reason === 'recovery') conf += 5;
+  conf = Math.min(conf, 94);
 
   return {
     big: predictBig,
@@ -417,25 +442,23 @@ function analyze(list) {
     color: COLOR_MAP[predictNum].color,
     emoji: COLOR_MAP[predictNum].emoji,
     confidence: Math.round(conf),
+    reason: reason,
     streak: currentStreak
   };
 }
 
 // ---------- FETCH ----------
 async function fetchHistory() {
-  if (!running) return;
   try {
-    document.getElementById('status').textContent = 'Fetching data...';
     const res = await fetch(API + Date.now());
     const json = await res.json();
     if (json && json.data && json.data.list) {
-      lastFetchTime = Date.now();
       processData(json.data.list);
     } else {
       document.getElementById('status').textContent = 'No data received';
     }
   } catch (e) {
-    document.getElementById('status').textContent = 'Connection failed — retrying...';
+    document.getElementById('status').textContent = 'Connection error — retrying...';
   }
 }
 
@@ -444,8 +467,20 @@ function processData(list) {
   if (!list || list.length === 0) return;
   const latest = list[0];
 
+  // Calculate next period number and timer
+  const currentIssue = latest.issueNumber;
+  const issueNum = parseInt(currentIssue);
+  nextPeriodNum = (issueNum + 1).toString();
+
+  // Timer sync — based on latest issue
+  if (lastIssue !== currentIssue) {
+    periodEndTime = Date.now() + (PERIOD_SECONDS * 1000);
+  }
+
+  document.getElementById('periodNum').textContent = nextPeriodNum.slice(-4);
+
   // New round detection
-  if (lastIssue && lastIssue !== latest.issueNumber) {
+  if (lastIssue && lastIssue !== currentIssue) {
     if (lastPrediction) {
       const actualNum = parseInt(latest.number);
       const actualBig = actualNum >= 5;
@@ -462,7 +497,7 @@ function processData(list) {
       }
 
       historyData.unshift({
-        issue: latest.issueNumber.slice(-4),
+        issue: currentIssue.slice(-4),
         predicted: lastPrediction.big ? 'BIG' : 'SMALL',
         actual: actualNum,
         actualBig: actualBig ? 'BIG' : 'SMALL',
@@ -472,11 +507,7 @@ function processData(list) {
     }
   }
 
-  lastIssue = latest.issueNumber;
-  document.getElementById('periodNum').textContent = latest.issueNumber.slice(-4);
-
-  // Timer calculation - next period
-  periodEndTime = lastFetchTime + (PERIOD_SECONDS * 1000);
+  lastIssue = currentIssue;
 
   // Generate prediction
   const prediction = analyze(list);
@@ -499,11 +530,11 @@ function displayPrediction(p) {
 
   document.getElementById('signalNum').textContent = p.num;
   document.getElementById('signalColor').textContent = p.emoji + ' ' + p.color;
-  document.getElementById('signalColor').style.color = 
-    p.color.includes('GREEN') ? '#00ff88' : 
+  document.getElementById('signalColor').style.color =
+    p.color.includes('GREEN') ? '#00ff88' :
     p.color.includes('RED') ? '#ff4466' : '#ff00cc';
 
-  document.getElementById('confText').textContent = 'Confidence: ' + p.confidence + '%';
+  document.getElementById('confText').textContent = p.confidence + '%';
   document.getElementById('confFill').style.width = p.confidence + '%';
 }
 
@@ -524,7 +555,8 @@ function displayHistory() {
     <div class="history-item">
       <span class="h-issue">#${h.issue}</span>
       <span class="h-pred">${h.predicted}</span>
-      <span class="h-actual">→ ${h.actual} ${h.actualBig}</span>
+      <span class="h-arrow">→</span>
+      <span class="h-actual">${h.actual} ${h.actualBig}</span>
       <span class="h-result ${h.won ? 'win-text' : 'loss-text'}">
         ${h.won ? '✓ WIN' : '✗ LOSS'}
       </span>
@@ -532,30 +564,9 @@ function displayHistory() {
   `).join('');
 }
 
-function manualRefresh() {
-  fetchHistory();
-}
-
-function toggleStop() {
-  running = !running;
-  const btn = document.getElementById('stopBtn');
-  if (running) {
-    btn.textContent = '⏸ STOP';
-    btn.className = 'btn btn-stop';
-    document.getElementById('status').textContent = 'Resumed';
-    fetchHistory();
-  } else {
-    btn.textContent = '▶ START';
-    btn.className = 'btn btn-start';
-    document.getElementById('status').textContent = 'Paused';
-  }
-}
-
 // ---------- START ----------
-setTimeout(fetchHistory, 1500);
-setInterval(() => {
-  if (running) fetchHistory();
-}, REFRESH_MS);
+setTimeout(fetchHistory, 1000);
+setInterval(fetchHistory, REFRESH_MS);
 </script>
 </body>
 </html>
