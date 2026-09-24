@@ -144,6 +144,24 @@
     margin-top: 15px;
     cursor: pointer;
   }
+  .manual-box {
+    background: #111;
+    border: 1px solid #00ffcc;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 15px;
+  }
+  .manual-box textarea {
+    width: 100%;
+    height: 80px;
+    background: #000;
+    color: #0f0;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 12px;
+    font-family: monospace;
+  }
   .loading {
     color: #00ffcc;
     font-size: 16px;
@@ -189,13 +207,22 @@
   <div class="loading">ডেটা লোড হচ্ছে...</div>
 </div>
 
+<div class="manual-box">
+  <div style="color:#00ffcc;font-size:13px;margin-bottom:8px;">
+    📋 নিচে dkwin9 থেকে ডেটা পেস্ট করো:
+  </div>
+  <textarea id="manualInput" placeholder='এখানে JSON ডেটা পেস্ট করো...'></textarea>
+  <button class="refresh-btn" onclick="loadManual()" style="margin-top:8px;">
+    ✅ ডেটা লোড করো
+  </button>
+</div>
+
 <button class="refresh-btn" onclick="manualRefresh()">🔄 ম্যানুয়াল রিফ্রেশ</button>
 <div class="status" id="status">সংযোগ তৈরি হচ্ছে...</div>
 
 <script>
 // ---------- CONFIG ----------
 const API = 'https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json?ts=';
-const PROXY = 'https://corsproxy.io/?';
 const REFRESH_MS = 30000;
 
 // ---------- VARIABLES ----------
@@ -203,7 +230,6 @@ let lastIssue = null;
 let lastPrediction = null;
 let winCount = 0, lossCount = 0;
 let historyData = [];
-let sessionStart = Date.now();
 
 // ---------- COLOR MAP ----------
 const COLOR_MAP = {
@@ -222,112 +248,89 @@ const COLOR_MAP = {
 // ---------- ANALYSIS ----------
 function analyze(list) {
   if (!list || list.length < 5) return null;
-
-  // শেষ ২০ রাউন্ড
   const recent = list.slice(0, 20).map(x => ({
     num: parseInt(x.number),
     big: parseInt(x.number) >= 5,
     color: x.color
   }));
-
-  // Big/Small কাউন্ট
   let bigCount = 0, smallCount = 0;
   recent.forEach(r => r.big ? bigCount++ : smallCount++);
-
-  // Big/Small স্ট্রিক
   let currentStreak = 1;
   for (let i = 1; i < recent.length; i++) {
     if (recent[i].big === recent[0].big) currentStreak++;
     else break;
   }
-
-  // Number ফ্রিকোয়েন্সি
   const freq = {};
   for (let i = 0; i <= 9; i++) freq[i] = 0;
   recent.forEach(r => freq[r.num]++);
-
-  // সবচেয়ে কম আসা নাম্বার খুঁজি (Late Number)
   let candidateNums = [];
-  for (let i = 0; i <= 9; i++) {
-    candidateNums.push({ num: i, count: freq[i] });
-  }
+  for (let i = 0; i <= 9; i++) candidateNums.push({ num: i, count: freq[i] });
   candidateNums.sort((a, b) => a.count - b.count);
-
-  // Big/Small প্রেডিকশন
   let predictBig;
-  if (currentStreak >= 4) {
-    predictBig = !recent[0].big; // স্ট্রিক ব্রেক হবে
-  } else if (bigCount > smallCount + 3) {
-    predictBig = false; // Small আসার সম্ভাবনা
-  } else if (smallCount > bigCount + 3) {
-    predictBig = true;  // Big আসার সম্ভাবনা
-  } else {
-    predictBig = Math.random() > 0.5;
-  }
-
-  // Number প্রেডিকশন
+  if (currentStreak >= 4) predictBig = !recent[0].big;
+  else if (bigCount > smallCount + 3) predictBig = false;
+  else if (smallCount > bigCount + 3) predictBig = true;
+  else predictBig = Math.random() > 0.5;
   let predictNum;
   const targetType = predictBig ? 'Big' : 'Small';
   const validNums = candidateNums.filter(c => COLOR_MAP[c.num].type === targetType);
-  if (validNums.length > 0) {
-    predictNum = validNums[0].num;
-  } else {
-    predictNum = predictBig ? 7 : 2;
-  }
-
-  // কনফিডেন্স
+  predictNum = validNums.length > 0 ? validNums[0].num : (predictBig ? 7 : 2);
   let conf = 55 + Math.min(currentStreak * 3, 15) + Math.min(Math.abs(bigCount - smallCount), 15);
   conf = Math.min(conf, 88);
-
   return {
-    big: predictBig,
-    num: predictNum,
+    big: predictBig, num: predictNum,
     color: COLOR_MAP[predictNum].color,
     emoji: COLOR_MAP[predictNum].emoji,
-    confidence: Math.round(conf),
-    streak: currentStreak
+    confidence: Math.round(conf), streak: currentStreak
   };
+}
+
+// ---------- MANUAL LOAD ----------
+function loadManual() {
+  const text = document.getElementById('manualInput').value.trim();
+  if (!text) { alert('JSON ডেটা পেস্ট করো'); return; }
+  try {
+    const json = JSON.parse(text);
+    if (json && json.data && json.data.list) {
+      processData(json.data.list);
+      document.getElementById('status').textContent = '✅ ম্যানুয়াল ডেটা লোড হয়েছে';
+    } else {
+      document.getElementById('status').textContent = 'ভুল ফরম্যাট';
+    }
+  } catch (e) {
+    document.getElementById('status').textContent = 'JSON পার্স এরর';
+  }
 }
 
 // ---------- FETCH ----------
 async function fetchHistory() {
   try {
     document.getElementById('status').textContent = 'ডেটা আনছি...';
-    const url = API + Date.now();
-    const res = await fetch (PROXY + url);
+    const res = await fetch(API + Date.now(), { mode: 'cors' });
     const json = await res.json();
-
     if (json && json.data && json.data.list) {
-      const list = json.data.list;
-      processData(list);
+      processData(json.data.list);
     } else {
       document.getElementById('status').textContent = 'ডেটা পাওয়া যায়নি';
     }
   } catch (e) {
-    document.getElementById('status').textContent = 'সংযোগ ব্যর্থ: ' + e.message;
+    document.getElementById('status').textContent = '⚠️ নিচের বক্সে ডেটা পেস্ট করো';
   }
 }
 
 // ---------- PROCESS ----------
 function processData(list) {
   if (!list || list.length === 0) return;
-
   const latest = list[0];
-
-  // নতুন রাউন্ড?
   if (lastIssue && lastIssue !== latest.issueNumber) {
-    // আগের প্রেডিকশন চেক
     if (lastPrediction) {
       const actualNum = parseInt(latest.number);
       const actualBig = actualNum >= 5;
       const won = (actualBig === lastPrediction.big);
-      if (won) winCount++;
-      else lossCount++;
-
+      if (won) winCount++; else lossCount++;
       historyData.unshift({
         issue: latest.issueNumber.slice(-4),
         predicted: lastPrediction.big ? 'BIG' : 'SMALL',
-        predNum: lastPrediction.num,
         actual: actualNum,
         actualBig: actualBig ? 'BIG' : 'SMALL',
         won: won
@@ -335,19 +338,14 @@ function processData(list) {
       if (historyData.length > 30) historyData.pop();
     }
   }
-
   lastIssue = latest.issueNumber;
-
-  // নতুন প্রেডিকশন
   const prediction = analyze(list);
   if (prediction) {
     lastPrediction = prediction;
     displayPrediction(prediction);
   }
-
   displayHistory();
   displayStats();
-  document.getElementById('status').textContent = '✅ আপডেট: ' + new Date().toLocaleTimeString();
 }
 
 // ---------- DISPLAY ----------
@@ -356,10 +354,8 @@ function displayPrediction(p) {
   bigEl.textContent = p.big ? '🔵 BIG' : '🔴 SMALL';
   bigEl.style.color = p.big ? '#ff8844' : '#44aaff';
   bigEl.classList.remove('loading');
-
   document.getElementById('signalNum').textContent = p.num;
   document.getElementById('signalColor').textContent = p.emoji + ' ' + p.color;
-
   document.getElementById('confText').textContent = 'কনফিডেন্স: ' + p.confidence + '%';
   document.getElementById('confFill').style.width = p.confidence + '%';
 }
@@ -387,14 +383,11 @@ function displayHistory() {
   `).join('');
 }
 
-function manualRefresh() {
-  fetchHistory();
-}
+function manualRefresh() { fetchHistory(); }
 
 // ---------- START ----------
 setTimeout(fetchHistory, 1500);
 setInterval(fetchHistory, REFRESH_MS);
-
 </script>
 </body>
-  </html>
+ </html>
