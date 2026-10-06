@@ -16,28 +16,47 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#05050a;background-image
 .tb .c.r{align-items:flex-end}
 .tb .l{font-size:9px;letter-spacing:3px;color:#666;margin-bottom:5px;font-weight:800}
 .tb .p{color:#00ffe0;font-weight:900;font-size:22px;font-family:'Courier New',monospace;text-shadow:0 0 18px #00ffe0;letter-spacing:2px}
-.tb .t{color:#ffd700;font-weight:900;font-size:24px;font-family:'Courier New',monospace;text-shadow:0 0 18px #ffd700;letter-spacing:2px;transition:color .3s}
+.tb .t{color:#ffd700;font-weight:900;font-size:24px;font-family:'Courier New',monospace;text-shadow:0 0 18px #ffd700;letter-spacing:2px}
 .tb .t.d{color:#ff3366;text-shadow:0 0 22px #ff3366;animation:bl .6s infinite}
 @keyframes bl{0%,100%{opacity:1}50%{opacity:.5}}
-.mb{background:linear-gradient(160deg,#0a0a15,#141428,#0a0a15);border-radius:22px;padding:26px 20px;text-align:center;margin-bottom:14px;position:relative;overflow:hidden;box-shadow:0 0 45px #00ffe025,inset 0 0 35px #00ffe008}
-.mb::before{content:'';position:absolute;inset:-2px;border-radius:22px;padding:2px;background:linear-gradient(135deg,#00ffe0,#ff00c8,#00ffe0);background-size:300% 300%;animation:bf 6s linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:0}
-@keyframes bf{0%{background-position:0% 0%}100%{background-position:300% 300%}}
+
+.mb{background:linear-gradient(160deg,#0a0a15,#141428,#0a0a15);border-radius:24px;padding:28px 20px 26px;text-align:center;margin-bottom:14px;position:relative;overflow:hidden;box-shadow:0 0 50px #00ffe028,inset 0 0 40px #00ffe00a}
+.mb::before{content:'';position:absolute;inset:-2px;border-radius:24px;padding:2px;background:linear-gradient(135deg,#00ffe0,#ff00c8,#b300ff,#00ffe0);background-size:400% 400%;animation:bf 6s linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:0}
+@keyframes bf{0%{background-position:0% 0%}100%{background-position:400% 400%}}
 .mb>*{position:relative;z-index:2}
-.sl{font-size:10px;letter-spacing:8px;color:#00ffe0;font-weight:900;margin-bottom:8px;text-shadow:0 0 12px #00ffe0}
-.sb{font-size:62px;font-weight:900;letter-spacing:5px;margin:10px 0;line-height:1;transition:.4s}
-.sb.bc{color:#ff9d3d;text-shadow:0 0 45px #ff9d3d,0 0 90px #ff9d3d55}
-.sb.sc{color:#4fc3ff;text-shadow:0 0 45px #4fc3ff,0 0 90px #4fc3ff55}
-.snw{display:flex;justify-content:center;align-items:center;gap:14px;margin:10px 0}
-.sn{font-size:52px;font-weight:900;color:#ffd700;font-family:'Courier New',monospace;text-shadow:0 0 35px #ffd700;line-height:1}
-.se{font-size:34px;filter:drop-shadow(0 0 12px currentColor)}
-.sc2{font-size:15px;font-weight:900;letter-spacing:4px;margin-top:8px;color:#ccc}
-.reason{font-size:10px;color:#666;margin-top:8px;letter-spacing:2px;font-family:'Courier New',monospace}
-.aw{margin-top:22px}
-.al{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:4px;color:#777;margin-bottom:7px;font-weight:800}
-.av{color:#00ffe0;font-size:24px;font-weight:900;text-shadow:0 0 18px #00ffe0;font-family:'Courier New',monospace}
-.cb{height:12px;background:#05050a;border-radius:6px;overflow:hidden;border:1px solid #00ffe033;box-shadow:inset 0 0 10px #000}
-.cf{height:100%;background:linear-gradient(90deg,#00ffe0,#00b3ff,#b300ff);background-size:200% 100%;width:0;transition:width .8s ease;box-shadow:0 0 18px #00ffe0;animation:fl 3s linear infinite}
+.sl{font-size:10px;letter-spacing:8px;color:#00ffe0;font-weight:900;margin-bottom:10px;text-shadow:0 0 12px #00ffe0}
+
+/* ===== NEW BIG/SMALL DESIGN ===== */
+.sbwrap{display:inline-block;padding:14px 40px;border-radius:20px;margin:8px 0;position:relative;transition:.5s}
+.sbwrap.big{background:linear-gradient(135deg,#ff6b0066,#ff9d3d33);border:2px solid #ff9d3d;box-shadow:0 0 35px #ff9d3d66,inset 0 0 25px #ff9d3d22}
+.sbwrap.small{background:linear-gradient(135deg,#0088ff66,#4fc3ff33);border:2px solid #4fc3ff;box-shadow:0 0 35px #4fc3ff66,inset 0 0 25px #4fc3ff22}
+.sb{font-size:52px;font-weight:900;letter-spacing:6px;line-height:1;transition:.4s}
+.sbwrap.big .sb{color:#ffb366;text-shadow:0 0 30px #ff9d3d,0 0 60px #ff9d3d66}
+.sbwrap.small .sb{color:#66d4ff;text-shadow:0 0 30px #4fc3ff,0 0 60px #4fc3ff66}
+
+/* ===== NEW NUMBER DESIGN ===== */
+.snw{display:flex;justify-content:center;align-items:center;gap:16px;margin:16px 0 10px}
+.snbox{width:70px;height:70px;border-radius:18px;background:linear-gradient(145deg,#1a1a2e,#0a0a15);border:2px solid #ffd70088;display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px #ffd70044,inset 0 0 15px #ffd70022;position:relative;overflow:hidden}
+.snbox::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,#ffd70033,transparent);animation:rot 3s linear infinite}
+@keyframes rot{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.sn{font-size:44px;font-weight:900;color:#ffd700;font-family:'Courier New',monospace;text-shadow:0 0 25px #ffd700;line-height:1;position:relative;z-index:2}
+.sebox{display:flex;gap:6px}
+.se{font-size:36px;filter:drop-shadow(0 0 15px currentColor)}
+
+.sc2{font-size:15px;font-weight:900;letter-spacing:4px;margin-top:10px;display:inline-block;padding:6px 18px;border-radius:12px;background:#000;border:1px solid #ffffff22}
+.sc2.green{color:#00ff88;border-color:#00ff8844;text-shadow:0 0 12px #00ff88}
+.sc2.red{color:#ff4466;border-color:#ff446644;text-shadow:0 0 12px #ff4466}
+.sc2.violet{color:#b300ff;border-color:#b300ff44;text-shadow:0 0 12px #b300ff}
+.sc2.multi{color:#ffd700;border-color:#ffd70044;text-shadow:0 0 12px #ffd700}
+
+.reason{font-size:10px;color:#666;margin-top:10px;letter-spacing:2px;font-family:'Courier New',monospace}
+.aw{margin-top:24px}
+.al{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:4px;color:#777;margin-bottom:8px;font-weight:800}
+.av{color:#00ffe0;font-size:26px;font-weight:900;text-shadow:0 0 20px #00ffe0;font-family:'Courier New',monospace}
+.cb{height:14px;background:#05050a;border-radius:7px;overflow:hidden;border:1px solid #00ffe033;box-shadow:inset 0 0 12px #000}
+.cf{height:100%;background:linear-gradient(90deg,#00ffe0,#00b3ff,#b300ff);background-size:200% 100%;width:0;transition:width .9s ease;box-shadow:0 0 20px #00ffe0;animation:fl 3s linear infinite}
 @keyframes fl{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+
 .st{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:16px}
 .sx{background:linear-gradient(145deg,#0a0a15,#141428);padding:15px 6px;border-radius:14px;text-align:center;border:1px solid #ffffff11;position:relative;overflow:hidden}
 .sx::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
@@ -87,8 +106,11 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#05050a;background-image
 
 <div class="mb">
 <div class="sl">SIGNAL</div>
-<div id="sb" class="sb ld">WAIT...</div>
-<div class="snw"><div id="sn" class="sn">-</div><div id="se" class="se"></div></div>
+<div id="sbw" class="sbwrap"><div id="sb" class="sb ld">WAIT...</div></div>
+<div class="snw">
+<div class="snbox"><div id="sn" class="sn">-</div></div>
+<div class="sebox"><div id="se" class="se"></div></div>
+</div>
 <div id="sc" class="sc2">-</div>
 <div class="reason" id="rs">analyzing...</div>
 <div class="aw">
@@ -110,8 +132,9 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#05050a;background-image
 
 <script>
 const API='https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json?ts=';
-const REFRESH=3000, PERIOD=30, MAXH=10;
+const REFRESH=5000, PERIOD=30, MAXH=10;
 let lastIssue=null, curPred=null, wc=0, lc=0, hd=[], lossStreak=0, lastLossSig=null, lastPN=null, lastPB=null, endT=0;
+let recentPredictions=[]; // track last 5 predictions
 
 const CM={0:{c:'RED+VIOLET',e:'🔴🟣',t:'SMALL'},1:{c:'GREEN',e:'🟢',t:'SMALL'},2:{c:'RED',e:'🔴',t:'SMALL'},3:{c:'GREEN',e:'🟢',t:'SMALL'},4:{c:'RED',e:'🔴',t:'SMALL'},5:{c:'GREEN+VIOLET',e:'🟢🟣',t:'BIG'},6:{c:'RED',e:'🔴',t:'BIG'},7:{c:'GREEN',e:'🟢',t:'BIG'},8:{c:'RED',e:'🔴',t:'BIG'},9:{c:'GREEN',e:'🟢',t:'BIG'}};
 
@@ -129,11 +152,10 @@ setInterval(uT,250);
 function analyze(list){
   if(!list||list.length<8)return null;
   const rec=list.slice(0,50).map(x=>({n:parseInt(x.number),b:parseInt(x.number)>=5,c:x.color}));
-  const l30=rec.slice(0,30), l20=rec.slice(0,20), l15=rec.slice(0,15), l10=rec.slice(0,10);
+  const l30=rec.slice(0,30), l20=rec.slice(0,20), l15=rec.slice(0,15), l10=rec.slice(0,10), l5=rec.slice(0,5);
   const seq=rec.map(r=>r.b?'B':'S');
   
   let bc=0,sc=0;l30.forEach(r=>r.b?bc++:sc++);
-  let bc15=0,sc15=0;l15.forEach(r=>r.b?bc15++:sc15++);
   let bc10=0,sc10=0;l10.forEach(r=>r.b?bc10++:sc10++);
   
   let streak=1;for(let i=1;i<seq.length;i++){if(seq[i]===seq[0])streak++;else break;}
@@ -145,79 +167,81 @@ function analyze(list){
     if(seq.length>=k.length&&seq.slice(0,k.length).join('')===k){ps=PAT[k][0];pw=PAT[k][1];mp=k;break;}
   }
   
-  // Short-term bias (10 rounds)
+  // Short-term bias
   let fb10=0;
   if(bc10>sc10+3)fb10=-3;else if(bc10>sc10+2)fb10=-2;else if(bc10>sc10+1)fb10=-1;
   else if(sc10>bc10+3)fb10=3;else if(sc10>bc10+2)fb10=2;else if(sc10>bc10+1)fb10=1;
   
-  // Medium bias (15)
-  let fb15=0;
-  if(bc15>sc15+4)fb15=-2;else if(bc15>sc15+2)fb15=-1;
-  else if(sc15>bc15+4)fb15=2;else if(sc15>bc15+2)fb15=1;
-  
-  // GAP analysis - which number missing longest
+  // Number gap analysis
   const nf={},ns={};
   for(let i=0;i<=9;i++){nf[i]=0;ns[i]=999;}
   l30.forEach(r=>nf[r.n]++);
   rec.forEach((r,i)=>{if(ns[r.n]===999)ns[r.n]=i;});
   
-  // Cluster analysis - recent repeats
-  const recent10nums = l10.map(r=>r.n);
-  const clusterCount = {};
+  // Recent clusters
+  const recent10nums=l10.map(r=>r.n);
+  const clusterCount={};
   recent10nums.forEach(n=>clusterCount[n]=(clusterCount[n]||0)+1);
   
-  // Cold score combining gap + freq + cluster
+  // Cold numbers
   let cold=[];
   for(let i=0;i<=9;i++){
-    let score = ns[i] * 1.5 - nf[i] * 2;
-    if(clusterCount[i]>2) score -= 3; // recent cluster = less likely
+    let score=ns[i]*1.5-nf[i]*2;
+    if(clusterCount[i]>2)score-=5;
+    if(clusterCount[i]>=1&&clusterCount[i]<=1)score+=2; // appeared once = good
     cold.push({n:i,s:score});
   }
   cold.sort((a,b)=>b.s-a.s);
   
-  // Recent color trend
-  const recentColors = l10.map(r=>r.c);
-  const greenC = recentColors.filter(c=>c==='green').length;
-  const redC = recentColors.filter(c=>c==='red').length;
-  const violetC = recentColors.filter(c=>c==='violet').length;
+  // ===== ANTI-REPEAT LOGIC =====
+  // Check last 5 predictions - if same Big/Small repeated 3+ times, flip
+  const last5Pred = recentPredictions.slice(-5).map(p=>p.big);
+  let sameCount = 0;
+  if(last5Pred.length>=3){
+    const last3 = last5Pred.slice(-3);
+    if(last3[0]===last3[1]&&last3[1]===last3[2]) sameCount=3;
+  }
   
-  // ============ PREDICTION ============
+  // ===== PREDICTION =====
   let pb,rs='',cf=68;
   
-  // 1. Recovery (highest priority)
+  // 1. Recovery
   if(lossStreak>=1&&lastLossSig!==null){
-    pb=!lastLossSig;
-    rs=lossStreak>=2?'recovery-strong':'recovery';
+    pb=!lastLossSig;rs=lossStreak>=2?'recovery-strong':'recovery';
     cf=lossStreak>=2?82:76;
   }
-  // 2. Very strong pattern
+  // 2. ANTI-REPEAT (if same signal 3 times)
+  else if(sameCount>=3){
+    pb=!last5Pred[0];rs='anti-repeat';cf=74;
+  }
+  // 3. Very strong pattern
   else if(ps&&pw>=76){
     pb=ps==='B';rs='pat:'+mp;cf=pw;
   }
-  // 3. Pattern + bias agree
+  // 4. Pattern + bias
   else if(ps&&pw>=65&&((ps==='B'&&fb10<0)||(ps==='S'&&fb10>0))){
     pb=ps==='B';rs='pat+bias';cf=Math.min(pw+6,90);
   }
-  // 4. Strong short-term bias
+  // 5. Strong bias
   else if(Math.abs(fb10)>=3){
     pb=fb10>0;rs='strong-bias';cf=77;
   }
-  // 5. Medium pattern
+  // 6. Medium pattern
   else if(ps&&pw>=62){
     pb=ps==='B';rs='pat:'+mp;cf=pw;
   }
-  // 6. Medium bias
+  // 7. Medium bias
   else if(Math.abs(fb10)>=2){
     pb=fb10>0;rs='bias';cf=72;
   }
-  // 7. Long streak
+  // 8. Long streak
   else if(streak>=6){
     pb=!rec[0].b;rs='long-streak';cf=78;
   }
   else if(streak>=4){
     pb=!rec[0].b;rs='streak-break';cf=72;
   }
-  // 8. Fallback alternate
+  // 9. Fallback alternate
   else{
     pb=!rec[0].b;rs='alternate';cf=66;
   }
@@ -226,6 +250,12 @@ function analyze(list){
   const tt=pb?'BIG':'SMALL';
   const vn=cold.filter(c=>CM[c.n].t===tt);
   let pnum=vn.length>0?vn[0].n:(pb?7:2);
+  
+  // ANTI-REPEAT NUMBER: if same number last 2 predictions, change
+  const last2Nums = recentPredictions.slice(-2).map(p=>p.num);
+  if(last2Nums.length===2 && last2Nums[0]===pnum && last2Nums[1]===pnum && vn.length>1){
+    pnum=vn.find(v=>v.n!==pnum).n;
+  }
   if(pnum===lastPN&&pb===lastPB&&vn.length>1)pnum=vn[1].n;
   
   cf=Math.max(65,Math.min(92,cf));
@@ -249,34 +279,35 @@ function process(list){
   if(lastIssue!==null&&lastIssue!==ni){
     if(curPred){
       const an=parseInt(lt.number), ab=an>=5;
-      const bigMatch = (ab===curPred.big);
-      const numMatch = (an===curPred.num);
-      const jackpot = bigMatch && numMatch;
-      const won = bigMatch; // number win also means big/small win
+      const bigMatch=(ab===curPred.big);
+      const numMatch=(an===curPred.num);
+      const jackpot=bigMatch&&numMatch;
+      const won=bigMatch;
       
       if(won){wc++;lossStreak=0;lastLossSig=null;}
       else{lc++;lossStreak++;lastLossSig=curPred.big;}
       
-      hd.unshift({
-        i:ni.slice(-4),
-        p:curPred.big?'BIG':'SMALL',
-        pn:curPred.num,
-        a:an,
-        ab:ab?'BIG':'SMALL',
-        w:won,
-        jp:jackpot
-      });
+      hd.unshift({i:ni.slice(-4),p:curPred.big?'BIG':'SMALL',pn:curPred.num,a:an,ab:ab?'BIG':'SMALL',w:won,jp:jackpot});
       if(hd.length>MAXH)hd=hd.slice(0,MAXH);
     }
     lastIssue=ni;
     endT=Date.now()+PERIOD*1000;
     const p=analyze(list);
-    if(p){curPred=p;lastPN=p.num;lastPB=p.big;showP(p);}
+    if(p){
+      curPred=p;lastPN=p.num;lastPB=p.big;
+      recentPredictions.push({big:p.big,num:p.num});
+      if(recentPredictions.length>10)recentPredictions.shift();
+      showP(p);
+    }
     showH();showS();
   }else if(lastIssue===null){
     lastIssue=ni;endT=Date.now()+PERIOD*1000;
     const p=analyze(list);
-    if(p){curPred=p;lastPN=p.num;lastPB=p.big;showP(p);}
+    if(p){
+      curPred=p;lastPN=p.num;lastPB=p.big;
+      recentPredictions.push({big:p.big,num:p.num});
+      showP(p);
+    }
     showH();showS();
   }
   document.getElementById('pn').textContent=(nn+1).toString().slice(-4);
@@ -284,12 +315,22 @@ function process(list){
 }
 
 function showP(p){
-  const b=document.getElementById('sb');
-  b.textContent=p.big?'BIG':'SMALL';
-  b.className='sb '+(p.big?'bc':'sc');
+  const w=document.getElementById('sbw');
+  w.className='sbwrap '+(p.big?'big':'small');
+  document.getElementById('sb').textContent=p.big?'BIG':'SMALL';
+  document.getElementById('sb').className='sb';
   document.getElementById('sn').textContent=p.num;
   document.getElementById('se').textContent=p.emoji;
-  document.getElementById('sc').textContent=p.color;
+  
+  const sc=document.getElementById('sc');
+  sc.textContent=p.color;
+  sc.className='sc2';
+  if(p.color.includes('GREEN')&&p.color.includes('VIOLET'))sc.classList.add('multi');
+  else if(p.color.includes('RED')&&p.color.includes('VIOLET'))sc.classList.add('multi');
+  else if(p.color.includes('GREEN'))sc.classList.add('green');
+  else if(p.color.includes('RED'))sc.classList.add('red');
+  else if(p.color.includes('VIOLET'))sc.classList.add('violet');
+  
   document.getElementById('rs').textContent='strategy: '+p.reason;
   document.getElementById('ct').textContent=p.conf+'%';
   document.getElementById('cfl').style.width=p.conf+'%';
@@ -304,9 +345,9 @@ function showH(){
   const h=document.getElementById('hy');
   if(!hd.length){h.innerHTML='<div class="em">NO RESULTS YET</div>';return;}
   h.innerHTML=hd.map(x=>{
-    let cls = x.jp?'jackpot':'';
-    let result = x.jp?'👑 JACKPOT':(x.w?'✓ WIN':'✗ LOSS');
-    let rcls = x.jp?'jp':(x.w?'wt':'lt');
+    let cls=x.jp?'jackpot':'';
+    let result=x.jp?'👑 JACKPOT':(x.w?'✓ WIN':'✗ LOSS');
+    let rcls=x.jp?'jp':(x.w?'wt':'lt');
     return `<div class="hi ${cls}">
       <span class="is">#${x.i}</span>
       <span class="pd">${x.p}</span>
