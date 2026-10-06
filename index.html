@@ -11,58 +11,47 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#05050a;background-image
 .hd .n{font-size:36px;font-weight:900;letter-spacing:10px;background:linear-gradient(90deg,#00ffe0,#00b3ff,#b300ff,#ff00c8,#00ffe0);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gs 5s linear infinite;filter:drop-shadow(0 0 20px #00ffe066)}
 @keyframes gs{0%{background-position:0% 50%}100%{background-position:300% 50%}}
 .hd .s{font-size:9px;letter-spacing:8px;color:#00ffe099;margin-top:6px;font-weight:700}
-.tb{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#0a0a15,#141428);border:1px solid #00ffe033;border-radius:14px;padding:14px 18px;margin-bottom:12px;box-shadow:0 0 22px #00ffe018}
+.tb{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#0a0a15,#141428);border:1px solid #00ffe033;border-radius:14px;padding:14px 18px;margin-bottom:12px}
 .tb .c{display:flex;flex-direction:column}
 .tb .c.r{align-items:flex-end}
 .tb .l{font-size:9px;letter-spacing:3px;color:#666;margin-bottom:5px;font-weight:800}
-.tb .p{color:#00ffe0;font-weight:900;font-size:22px;font-family:'Courier New',monospace;text-shadow:0 0 18px #00ffe0;letter-spacing:2px}
-.tb .t{color:#ffd700;font-weight:900;font-size:24px;font-family:'Courier New',monospace;text-shadow:0 0 18px #ffd700;letter-spacing:2px}
-.tb .t.d{color:#ff3366;text-shadow:0 0 22px #ff3366;animation:bl .6s infinite}
-@keyframes bl{0%,100%{opacity:1}50%{opacity:.5}}
-
-.mb{background:linear-gradient(160deg,#0a0a15,#141428,#0a0a15);border-radius:24px;padding:28px 20px 26px;text-align:center;margin-bottom:14px;position:relative;overflow:hidden;box-shadow:0 0 50px #00ffe028,inset 0 0 40px #00ffe00a}
+.tb .p{color:#00ffe0;font-weight:900;font-size:22px;font-family:'Courier New',monospace;text-shadow:0 0 18px #00ffe0}
+.tb .t{color:#ffd700;font-weight:900;font-size:24px;font-family:'Courier New',monospace;text-shadow:0 0 18px #ffd700}
+.tb .t.d{color:#ff3366;text-shadow:0 0 22px #ff3366}
+.mb{background:linear-gradient(160deg,#0a0a15,#141428,#0a0a15);border-radius:24px;padding:28px 20px 26px;text-align:center;margin-bottom:14px;position:relative;overflow:hidden;box-shadow:0 0 50px #00ffe028}
 .mb::before{content:'';position:absolute;inset:-2px;border-radius:24px;padding:2px;background:linear-gradient(135deg,#00ffe0,#ff00c8,#b300ff,#00ffe0);background-size:400% 400%;animation:bf 6s linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:0}
 @keyframes bf{0%{background-position:0% 0%}100%{background-position:400% 400%}}
 .mb>*{position:relative;z-index:2}
 .sl{font-size:10px;letter-spacing:8px;color:#00ffe0;font-weight:900;margin-bottom:10px;text-shadow:0 0 12px #00ffe0}
-
-/* ===== NEW BIG/SMALL DESIGN ===== */
-.sbwrap{display:inline-block;padding:14px 40px;border-radius:20px;margin:8px 0;position:relative;transition:.5s}
-.sbwrap.big{background:linear-gradient(135deg,#ff6b0066,#ff9d3d33);border:2px solid #ff9d3d;box-shadow:0 0 35px #ff9d3d66,inset 0 0 25px #ff9d3d22}
-.sbwrap.small{background:linear-gradient(135deg,#0088ff66,#4fc3ff33);border:2px solid #4fc3ff;box-shadow:0 0 35px #4fc3ff66,inset 0 0 25px #4fc3ff22}
-.sb{font-size:52px;font-weight:900;letter-spacing:6px;line-height:1;transition:.4s}
-.sbwrap.big .sb{color:#ffb366;text-shadow:0 0 30px #ff9d3d,0 0 60px #ff9d3d66}
-.sbwrap.small .sb{color:#66d4ff;text-shadow:0 0 30px #4fc3ff,0 0 60px #4fc3ff66}
-
-/* ===== NEW NUMBER DESIGN ===== */
+.sbwrap{display:inline-block;padding:14px 40px;border-radius:20px;margin:8px 0}
+.sbwrap.big{background:linear-gradient(135deg,#ff6b0066,#ff9d3d33);border:2px solid #ff9d3d;box-shadow:0 0 35px #ff9d3d66}
+.sbwrap.small{background:linear-gradient(135deg,#0088ff66,#4fc3ff33);border:2px solid #4fc3ff;box-shadow:0 0 35px #4fc3ff66}
+.sb{font-size:52px;font-weight:900;letter-spacing:6px;line-height:1}
+.sbwrap.big .sb{color:#ffb366;text-shadow:0 0 30px #ff9d3d}
+.sbwrap.small .sb{color:#66d4ff;text-shadow:0 0 30px #4fc3ff}
 .snw{display:flex;justify-content:center;align-items:center;gap:16px;margin:16px 0 10px}
-.snbox{width:70px;height:70px;border-radius:18px;background:linear-gradient(145deg,#1a1a2e,#0a0a15);border:2px solid #ffd70088;display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px #ffd70044,inset 0 0 15px #ffd70022;position:relative;overflow:hidden}
-.snbox::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,#ffd70033,transparent);animation:rot 3s linear infinite}
-@keyframes rot{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-.sn{font-size:44px;font-weight:900;color:#ffd700;font-family:'Courier New',monospace;text-shadow:0 0 25px #ffd700;line-height:1;position:relative;z-index:2}
-.sebox{display:flex;gap:6px}
-.se{font-size:36px;filter:drop-shadow(0 0 15px currentColor)}
-
+.snbox{width:70px;height:70px;border-radius:18px;background:linear-gradient(145deg,#1a1a2e,#0a0a15);border:2px solid #ffd70088;display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px #ffd70044}
+.sn{font-size:44px;font-weight:900;color:#ffd700;font-family:'Courier New',monospace;text-shadow:0 0 25px #ffd700;line-height:1}
+.se{font-size:36px}
 .sc2{font-size:15px;font-weight:900;letter-spacing:4px;margin-top:10px;display:inline-block;padding:6px 18px;border-radius:12px;background:#000;border:1px solid #ffffff22}
-.sc2.green{color:#00ff88;border-color:#00ff8844;text-shadow:0 0 12px #00ff88}
-.sc2.red{color:#ff4466;border-color:#ff446644;text-shadow:0 0 12px #ff4466}
-.sc2.violet{color:#b300ff;border-color:#b300ff44;text-shadow:0 0 12px #b300ff}
-.sc2.multi{color:#ffd700;border-color:#ffd70044;text-shadow:0 0 12px #ffd700}
-
-.reason{font-size:10px;color:#666;margin-top:10px;letter-spacing:2px;font-family:'Courier New',monospace}
+.sc2.green{color:#00ff88;border-color:#00ff8844}
+.sc2.red{color:#ff4466;border-color:#ff446644}
+.sc2.violet{color:#b300ff;border-color:#b300ff44}
+.sc2.multi{color:#ffd700;border-color:#ffd70044}
+.reason{font-size:11px;color:#888;margin-top:10px;letter-spacing:2px;font-family:'Courier New',monospace}
+.chance{font-size:13px;color:#00ffe0;margin-top:6px;font-weight:700;letter-spacing:1px}
 .aw{margin-top:24px}
 .al{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:4px;color:#777;margin-bottom:8px;font-weight:800}
 .av{color:#00ffe0;font-size:26px;font-weight:900;text-shadow:0 0 20px #00ffe0;font-family:'Courier New',monospace}
-.cb{height:14px;background:#05050a;border-radius:7px;overflow:hidden;border:1px solid #00ffe033;box-shadow:inset 0 0 12px #000}
+.cb{height:14px;background:#05050a;border-radius:7px;overflow:hidden;border:1px solid #00ffe033}
 .cf{height:100%;background:linear-gradient(90deg,#00ffe0,#00b3ff,#b300ff);background-size:200% 100%;width:0;transition:width .9s ease;box-shadow:0 0 20px #00ffe0;animation:fl 3s linear infinite}
 @keyframes fl{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-
 .st{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:16px}
-.sx{background:linear-gradient(145deg,#0a0a15,#141428);padding:15px 6px;border-radius:14px;text-align:center;border:1px solid #ffffff11;position:relative;overflow:hidden}
+.sx{background:linear-gradient(145deg,#0a0a15,#141428);padding:15px 6px;border-radius:14px;text-align:center;border:1px solid #ffffff11;position:relative}
 .sx::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
-.sx.w::after{background:#00ff88;box-shadow:0 0 12px #00ff88}
-.sx.l::after{background:#ff3366;box-shadow:0 0 12px #ff3366}
-.sx.tt::after{background:#ffd700;box-shadow:0 0 12px #ffd700}
+.sx.w::after{background:#00ff88}
+.sx.l::after{background:#ff3366}
+.sx.tt::after{background:#ffd700}
 .sxn{font-size:26px;font-weight:900;display:block;font-family:'Courier New',monospace;line-height:1}
 .sx.w .sxn{color:#00ff88;text-shadow:0 0 14px #00ff88}
 .sx.l .sxn{color:#ff3366;text-shadow:0 0 14px #ff3366}
@@ -70,26 +59,23 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#05050a;background-image
 .sxl{font-size:9px;letter-spacing:2px;color:#777;margin-top:7px;font-weight:800}
 .ht{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding:0 4px}
 .ht .tx{color:#00ffe0;font-size:11px;letter-spacing:5px;font-weight:900}
-.ht .cn{background:#00ffe022;color:#00ffe0;font-size:12px;font-weight:900;padding:4px 14px;border-radius:10px;border:1px solid #00ffe044;font-family:'Courier New',monospace}
+.ht .cn{background:#00ffe022;color:#00ffe0;font-size:12px;font-weight:900;padding:4px 14px;border-radius:10px;border:1px solid #00ffe044}
 .hs{max-height:420px;overflow-y:auto;background:#05050a;border-radius:14px;padding:8px;border:1px solid #ffffff0d}
-.hs::-webkit-scrollbar{width:4px}
-.hs::-webkit-scrollbar-thumb{background:#00ffe044;border-radius:2px}
-.hi{display:grid;grid-template-columns:50px 1fr 1fr 1fr 60px;align-items:center;padding:11px 7px;border-bottom:1px solid #ffffff08;font-size:10px;border-radius:8px;margin-bottom:3px;background:linear-gradient(90deg,#0a0a15,#0d0d1a);animation:fs .3s ease}
-@keyframes fs{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
-.hi.jackpot{background:linear-gradient(90deg,#2a1a00,#3d2600);border:1px solid #ffd70066;box-shadow:0 0 15px #ffd70044}
+.hi{display:grid;grid-template-columns:50px 1fr 1fr 1fr 60px;align-items:center;padding:11px 7px;border-bottom:1px solid #ffffff08;font-size:10px;border-radius:8px;margin-bottom:3px;background:linear-gradient(90deg,#0a0a15,#0d0d1a)}
+.hi.jackpot{background:linear-gradient(90deg,#2a1a00,#3d2600);border:1px solid #ffd70066}
 .hi .is{color:#555;font-family:'Courier New',monospace;font-weight:800}
 .hi .pd{color:#00c8ff;font-weight:900}
 .hi .pn{color:#ffa500;font-weight:900;font-family:'Courier New',monospace}
 .hi .ac{color:#ffd700;font-weight:900}
-.hi .rs{text-align:right;font-weight:900;letter-spacing:1px}
-.wt{color:#00ff88;text-shadow:0 0 8px #00ff88}
-.lt{color:#ff3366;text-shadow:0 0 8px #ff3366}
-.jp{color:#ffd700;text-shadow:0 0 12px #ffd700;animation:jpk 1s infinite alternate}
-@keyframes jpk{from{text-shadow:0 0 8px #ffd700}to{text-shadow:0 0 18px #ffd700,0 0 30px #ffd700}}
+.hi .rs{text-align:right;font-weight:900}
+.wt{color:#00ff88}
+.lt{color:#ff3366}
+.jp{color:#ffd700;text-shadow:0 0 12px #ffd700}
 .em{text-align:center;color:#444;padding:35px 20px;font-size:11px;letter-spacing:4px}
 .stt{text-align:center;font-size:10px;color:#555;margin-top:14px;font-family:'Courier New',monospace}
-.ld{color:#00ffe0;font-size:24px;font-weight:900;letter-spacing:4px;animation:pl 1.5s infinite}
+.ld{color:#00ffe0;font-size:22px;font-weight:900;letter-spacing:3px;animation:pl 1.5s infinite}
 @keyframes pl{0%,100%{opacity:1}50%{opacity:.3}}
+.analyzing{color:#ffd700;font-size:16px;font-weight:900;letter-spacing:2px;animation:pl 1s infinite}
 </style>
 </head>
 <body>
@@ -113,6 +99,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#05050a;background-image
 </div>
 <div id="sc" class="sc2">-</div>
 <div class="reason" id="rs">analyzing...</div>
+<div class="chance" id="ch">চান্স: --</div>
 <div class="aw">
 <div class="al"><span>ACCURACY</span><span class="av" id="ct">0%</span></div>
 <div class="cb"><div class="cf" id="cfl"></div></div>
@@ -132,9 +119,10 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#05050a;background-image
 
 <script>
 const API='https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json?ts=';
-const REFRESH=5000, PERIOD=30, MAXH=10;
+const REFRESH=3000, PERIOD=30, MAXH=10;
 let lastIssue=null, curPred=null, wc=0, lc=0, hd=[], lossStreak=0, lastLossSig=null, lastPN=null, lastPB=null, endT=0;
-let recentPredictions=[]; // track last 5 predictions
+let recentPredictions=[];
+let isAnalyzing=false;
 
 const CM={0:{c:'RED+VIOLET',e:'🔴🟣',t:'SMALL'},1:{c:'GREEN',e:'🟢',t:'SMALL'},2:{c:'RED',e:'🔴',t:'SMALL'},3:{c:'GREEN',e:'🟢',t:'SMALL'},4:{c:'RED',e:'🔴',t:'SMALL'},5:{c:'GREEN+VIOLET',e:'🟢🟣',t:'BIG'},6:{c:'RED',e:'🔴',t:'BIG'},7:{c:'GREEN',e:'🟢',t:'BIG'},8:{c:'RED',e:'🔴',t:'BIG'},9:{c:'GREEN',e:'🟢',t:'BIG'}};
 
@@ -149,52 +137,81 @@ const PAT={
 function uT(){if(!endT)return;let r=Math.ceil((endT-Date.now())/1000);if(r<0)r=0;let e=document.getElementById('tn');e.textContent=r+'s';if(r<=5)e.classList.add('d');else e.classList.remove('d');}
 setInterval(uT,250);
 
-function analyze(list){
+// ============ DEEP ANALYSIS ENGINE ============
+function deepAnalyze(list){
   if(!list||list.length<8)return null;
-  const rec=list.slice(0,50).map(x=>({n:parseInt(x.number),b:parseInt(x.number)>=5,c:x.color}));
-  const l30=rec.slice(0,30), l20=rec.slice(0,20), l15=rec.slice(0,15), l10=rec.slice(0,10), l5=rec.slice(0,5);
-  const seq=rec.map(r=>r.b?'B':'S');
   
-  let bc=0,sc=0;l30.forEach(r=>r.b?bc++:sc++);
-  let bc10=0,sc10=0;l10.forEach(r=>r.b?bc10++:sc10++);
+  const rec = list.slice(0, 50).map(x=>({
+    n:parseInt(x.number),
+    b:parseInt(x.number)>=5,
+    c:x.color
+  }));
   
-  let streak=1;for(let i=1;i<seq.length;i++){if(seq[i]===seq[0])streak++;else break;}
+  // ===== LAYER 1: LAST 30 =====
+  const l30 = rec.slice(0, 30);
+  let bc30=0, sc30=0;
+  l30.forEach(r=>r.b?bc30++:sc30++);
+  const bigPct30 = bc30/l30.length;
   
-  // Pattern matching
+  // ===== LAYER 2: LAST 15 =====
+  const l15 = rec.slice(0, 15);
+  let bc15=0, sc15=0;
+  l15.forEach(r=>r.b?bc15++:sc15++);
+  const bigPct15 = bc15/l15.length;
+  
+  // ===== LAYER 3: LAST 10 =====
+  const l10 = rec.slice(0, 10);
+  let bc10=0, sc10=0;
+  l10.forEach(r=>r.b?bc10++:sc10++);
+  const bigPct10 = bc10/l10.length;
+  
+  // ===== LAYER 4: LAST 5 =====
+  const l5 = rec.slice(0, 5);
+  let bc5=0, sc5=0;
+  l5.forEach(r=>r.b?bc5++:sc5++);
+  
+  // ===== TREND WEIGHTED =====
+  // Recent has more weight
+  const weightedBig = (bigPct30*0.15) + (bigPct15*0.20) + (bigPct10*0.30) + ((bc5/5)*0.35);
+  
+  // ===== PATTERN =====
+  const seq = rec.map(r=>r.b?'B':'S');
   let ps=null,pw=0,mp='';
-  const keys=Object.keys(PAT).sort((a,b)=>b.length-a.length);
+  const keys = Object.keys(PAT).sort((a,b)=>b.length-a.length);
   for(const k of keys){
-    if(seq.length>=k.length&&seq.slice(0,k.length).join('')===k){ps=PAT[k][0];pw=PAT[k][1];mp=k;break;}
+    if(seq.length>=k.length && seq.slice(0,k.length).join('')===k){
+      ps=PAT[k][0]; pw=PAT[k][1]; mp=k; break;
+    }
   }
   
-  // Short-term bias
-  let fb10=0;
-  if(bc10>sc10+3)fb10=-3;else if(bc10>sc10+2)fb10=-2;else if(bc10>sc10+1)fb10=-1;
-  else if(sc10>bc10+3)fb10=3;else if(sc10>bc10+2)fb10=2;else if(sc10>bc10+1)fb10=1;
+  // ===== STREAK =====
+  let streak=1;
+  for(let i=1;i<seq.length;i++){
+    if(seq[i]===seq[0])streak++; else break;
+  }
   
-  // Number gap analysis
-  const nf={},ns={};
-  for(let i=0;i<=9;i++){nf[i]=0;ns[i]=999;}
+  // ===== GAP ANALYSIS =====
+  const nf={}, ns={};
+  for(let i=0;i<=9;i++){nf[i]=0; ns[i]=999;}
   l30.forEach(r=>nf[r.n]++);
   rec.forEach((r,i)=>{if(ns[r.n]===999)ns[r.n]=i;});
   
-  // Recent clusters
-  const recent10nums=l10.map(r=>r.n);
+  // ===== CLUSTER =====
+  const recent10nums = l10.map(r=>r.n);
   const clusterCount={};
   recent10nums.forEach(n=>clusterCount[n]=(clusterCount[n]||0)+1);
   
-  // Cold numbers
+  // Cold score
   let cold=[];
   for(let i=0;i<=9;i++){
-    let score=ns[i]*1.5-nf[i]*2;
+    let score = ns[i]*1.5 - nf[i]*2;
     if(clusterCount[i]>2)score-=5;
-    if(clusterCount[i]>=1&&clusterCount[i]<=1)score+=2; // appeared once = good
+    if(clusterCount[i]===1)score+=2;
     cold.push({n:i,s:score});
   }
   cold.sort((a,b)=>b.s-a.s);
   
-  // ===== ANTI-REPEAT LOGIC =====
-  // Check last 5 predictions - if same Big/Small repeated 3+ times, flip
+  // ===== ANTI-REPEAT =====
   const last5Pred = recentPredictions.slice(-5).map(p=>p.big);
   let sameCount = 0;
   if(last5Pred.length>=3){
@@ -202,152 +219,217 @@ function analyze(list){
     if(last3[0]===last3[1]&&last3[1]===last3[2]) sameCount=3;
   }
   
-  // ===== PREDICTION =====
+  // ===== FINAL DECISION =====
   let pb,rs='',cf=68;
   
-  // 1. Recovery
-  if(lossStreak>=1&&lastLossSig!==null){
-    pb=!lastLossSig;rs=lossStreak>=2?'recovery-strong':'recovery';
-    cf=lossStreak>=2?82:76;
+  // 1. Loss recovery
+  if(lossStreak>=1 && lastLossSig!==null){
+    pb = !lastLossSig;
+    rs = lossStreak>=2 ? 'recovery-strong' : 'recovery';
+    cf = lossStreak>=2 ? 82 : 76;
   }
-  // 2. ANTI-REPEAT (if same signal 3 times)
+  // 2. Anti-repeat
   else if(sameCount>=3){
-    pb=!last5Pred[0];rs='anti-repeat';cf=74;
+    pb = !last5Pred[0];
+    rs = 'anti-repeat';
+    cf = 74;
   }
-  // 3. Very strong pattern
-  else if(ps&&pw>=76){
-    pb=ps==='B';rs='pat:'+mp;cf=pw;
+  // 3. Strong pattern
+  else if(ps && pw>=76){
+    pb = ps==='B';
+    rs = 'pattern:' + mp;
+    cf = pw;
   }
-  // 4. Pattern + bias
-  else if(ps&&pw>=65&&((ps==='B'&&fb10<0)||(ps==='S'&&fb10>0))){
-    pb=ps==='B';rs='pat+bias';cf=Math.min(pw+6,90);
+  // 4. Pattern + Trend agreement (NEW!)
+  else if(ps && pw>=62){
+    const patternAgreesWithTrend = 
+      (ps==='B' && weightedBig > 0.5) || (ps==='S' && weightedBig < 0.5);
+    if(patternAgreesWithTrend){
+      pb = ps==='B';
+      rs = 'pat+trend';
+      cf = Math.min(pw+8, 90);
+    } else {
+      // Pattern disagrees with trend - weak signal
+      pb = weightedBig > 0.5;
+      rs = 'trend-wins';
+      cf = 70;
+    }
   }
-  // 5. Strong bias
-  else if(Math.abs(fb10)>=3){
-    pb=fb10>0;rs='strong-bias';cf=77;
+  // 5. Weighted trend decision
+  else if(Math.abs(weightedBig - 0.5) > 0.15){
+    pb = weightedBig > 0.5;
+    rs = 'weighted-trend';
+    cf = 72;
   }
-  // 6. Medium pattern
-  else if(ps&&pw>=62){
-    pb=ps==='B';rs='pat:'+mp;cf=pw;
-  }
-  // 7. Medium bias
-  else if(Math.abs(fb10)>=2){
-    pb=fb10>0;rs='bias';cf=72;
-  }
-  // 8. Long streak
+  // 6. Long streak
   else if(streak>=6){
-    pb=!rec[0].b;rs='long-streak';cf=78;
+    pb = !rec[0].b;
+    rs = 'long-streak';
+    cf = 78;
   }
   else if(streak>=4){
-    pb=!rec[0].b;rs='streak-break';cf=72;
+    pb = !rec[0].b;
+    rs = 'streak-break';
+    cf = 72;
   }
-  // 9. Fallback alternate
+  // 7. Fallback
   else{
-    pb=!rec[0].b;rs='alternate';cf=66;
+    pb = !rec[0].b;
+    rs = 'alternate';
+    cf = 66;
   }
   
   // Number selection
-  const tt=pb?'BIG':'SMALL';
-  const vn=cold.filter(c=>CM[c.n].t===tt);
-  let pnum=vn.length>0?vn[0].n:(pb?7:2);
+  const tt = pb?'BIG':'SMALL';
+  const vn = cold.filter(c=>CM[c.n].t===tt);
+  let pnum = vn.length>0 ? vn[0].n : (pb?7:2);
   
-  // ANTI-REPEAT NUMBER: if same number last 2 predictions, change
   const last2Nums = recentPredictions.slice(-2).map(p=>p.num);
   if(last2Nums.length===2 && last2Nums[0]===pnum && last2Nums[1]===pnum && vn.length>1){
-    pnum=vn.find(v=>v.n!==pnum).n;
+    pnum = vn.find(v=>v.n!==pnum).n;
   }
-  if(pnum===lastPN&&pb===lastPB&&vn.length>1)pnum=vn[1].n;
+  if(pnum===lastPN && pb===lastPB && vn.length>1) pnum = vn[1].n;
   
-  cf=Math.max(65,Math.min(92,cf));
+  cf = Math.max(65, Math.min(92, cf));
   
-  return{big:pb,num:pnum,color:CM[pnum].c,emoji:CM[pnum].e,conf:cf,reason:rs};
+  // Chance percentage
+  const chance = Math.round(cf);
+  
+  return {big:pb, num:pnum, color:CM[pnum].c, emoji:CM[pnum].e, conf:cf, reason:rs, chance:chance};
 }
 
 async function fetchH(){
   try{
-    const r=await fetch(API+Date.now());
-    const j=await r.json();
-    if(j&&j.data&&j.data.list)process(j.data.list);
-    else document.getElementById('stt').textContent='No data';
-  }catch(e){document.getElementById('stt').textContent='Error — retrying...';}
+    const r = await fetch(API + Date.now());
+    const j = await r.json();
+    if(j && j.data && j.data.list) process(j.data.list);
+    else document.getElementById('stt').textContent = 'No data';
+  }catch(e){
+    document.getElementById('stt').textContent = 'Error — retrying...';
+  }
 }
 
 function process(list){
-  if(!list||!list.length)return;
-  const lt=list[0], ni=lt.issueNumber, nn=parseInt(ni);
+  if(!list||!list.length) return;
+  const lt = list[0], ni = lt.issueNumber, nn = parseInt(ni);
   
-  if(lastIssue!==null&&lastIssue!==ni){
+  if(lastIssue!==null && lastIssue!==ni){
     if(curPred){
-      const an=parseInt(lt.number), ab=an>=5;
-      const bigMatch=(ab===curPred.big);
-      const numMatch=(an===curPred.num);
-      const jackpot=bigMatch&&numMatch;
-      const won=bigMatch;
+      const an = parseInt(lt.number), ab = an>=5;
+      const bigMatch = (ab===curPred.big);
+      const numMatch = (an===curPred.num);
+      const jackpot = bigMatch && numMatch;
+      const won = bigMatch;
       
-      if(won){wc++;lossStreak=0;lastLossSig=null;}
-      else{lc++;lossStreak++;lastLossSig=curPred.big;}
+      if(won){wc++; lossStreak=0; lastLossSig=null;}
+      else{lc++; lossStreak++; lastLossSig=curPred.big;}
       
-      hd.unshift({i:ni.slice(-4),p:curPred.big?'BIG':'SMALL',pn:curPred.num,a:an,ab:ab?'BIG':'SMALL',w:won,jp:jackpot});
-      if(hd.length>MAXH)hd=hd.slice(0,MAXH);
+      hd.unshift({
+        i:ni.slice(-4),
+        p:curPred.big?'BIG':'SMALL',
+        pn:curPred.num,
+        a:an,
+        ab:ab?'BIG':'SMALL',
+        w:won, jp:jackpot
+      });
+      if(hd.length>MAXH) hd = hd.slice(0,MAXH);
     }
-    lastIssue=ni;
-    endT=Date.now()+PERIOD*1000;
-    const p=analyze(list);
-    if(p){
-      curPred=p;lastPN=p.num;lastPB=p.big;
-      recentPredictions.push({big:p.big,num:p.num});
-      if(recentPredictions.length>10)recentPredictions.shift();
-      showP(p);
-    }
-    showH();showS();
+    lastIssue = ni;
+    endT = Date.now() + PERIOD*1000;
+    
+    // ===== SHOW "ANALYZING" FOR 5 SECONDS =====
+    showAnalyzing();
+    isAnalyzing = true;
+    
+    setTimeout(()=>{
+      const p = deepAnalyze(list);
+      if(p){
+        curPred = p;
+        lastPN = p.num;
+        lastPB = p.big;
+        recentPredictions.push({big:p.big, num:p.num});
+        if(recentPredictions.length>10) recentPredictions.shift();
+        showP(p);
+      }
+      isAnalyzing = false;
+      showH();
+      showS();
+    }, 5000); // 5 seconds analysis
+    
   }else if(lastIssue===null){
-    lastIssue=ni;endT=Date.now()+PERIOD*1000;
-    const p=analyze(list);
-    if(p){
-      curPred=p;lastPN=p.num;lastPB=p.big;
-      recentPredictions.push({big:p.big,num:p.num});
-      showP(p);
-    }
-    showH();showS();
+    lastIssue = ni;
+    endT = Date.now() + PERIOD*1000;
+    
+    showAnalyzing();
+    setTimeout(()=>{
+      const p = deepAnalyze(list);
+      if(p){
+        curPred = p;
+        lastPN = p.num;
+        lastPB = p.big;
+        recentPredictions.push({big:p.big, num:p.num});
+        showP(p);
+      }
+      showH();
+      showS();
+    }, 3000);
   }
-  document.getElementById('pn').textContent=(nn+1).toString().slice(-4);
-  document.getElementById('stt').textContent='Updated: '+new Date().toLocaleTimeString();
+  
+  document.getElementById('pn').textContent = (nn+1).toString().slice(-4);
+  document.getElementById('stt').textContent = 'Updated: ' + new Date().toLocaleTimeString();
+}
+
+function showAnalyzing(){
+  const w = document.getElementById('sbw');
+  w.className = 'sbwrap';
+  document.getElementById('sb').textContent = 'ANALYZING...';
+  document.getElementById('sb').className = 'sb analyzing';
+  document.getElementById('sn').textContent = '?';
+  document.getElementById('se').textContent = '🔍';
+  document.getElementById('sc').textContent = 'CALCULATING';
+  document.getElementById('sc').className = 'sc2';
+  document.getElementById('rs').textContent = '৫ সেকেন্ড অপেক্ষা করো...';
+  document.getElementById('ch').textContent = 'চান্স: ক্যালকুলেট হচ্ছে...';
+  document.getElementById('ct').textContent = '...';
 }
 
 function showP(p){
-  const w=document.getElementById('sbw');
-  w.className='sbwrap '+(p.big?'big':'small');
-  document.getElementById('sb').textContent=p.big?'BIG':'SMALL';
-  document.getElementById('sb').className='sb';
-  document.getElementById('sn').textContent=p.num;
-  document.getElementById('se').textContent=p.emoji;
+  const w = document.getElementById('sbw');
+  w.className = 'sbwrap ' + (p.big?'big':'small');
+  document.getElementById('sb').textContent = p.big?'BIG':'SMALL';
+  document.getElementById('sb').className = 'sb';
+  document.getElementById('sn').textContent = p.num;
+  document.getElementById('se').textContent = p.emoji;
   
-  const sc=document.getElementById('sc');
-  sc.textContent=p.color;
-  sc.className='sc2';
-  if(p.color.includes('GREEN')&&p.color.includes('VIOLET'))sc.classList.add('multi');
-  else if(p.color.includes('RED')&&p.color.includes('VIOLET'))sc.classList.add('multi');
-  else if(p.color.includes('GREEN'))sc.classList.add('green');
-  else if(p.color.includes('RED'))sc.classList.add('red');
-  else if(p.color.includes('VIOLET'))sc.classList.add('violet');
+  const sc = document.getElementById('sc');
+  sc.textContent = p.color;
+  sc.className = 'sc2';
+  if(p.color.includes('GREEN') && p.color.includes('VIOLET')) sc.classList.add('multi');
+  else if(p.color.includes('RED') && p.color.includes('VIOLET')) sc.classList.add('multi');
+  else if(p.color.includes('GREEN')) sc.classList.add('green');
+  else if(p.color.includes('RED')) sc.classList.add('red');
+  else if(p.color.includes('VIOLET')) sc.classList.add('violet');
   
-  document.getElementById('rs').textContent='strategy: '+p.reason;
-  document.getElementById('ct').textContent=p.conf+'%';
-  document.getElementById('cfl').style.width=p.conf+'%';
+  document.getElementById('rs').textContent = 'strategy: ' + p.reason;
+  document.getElementById('ch').textContent = '🎯 এই সিগন্যাল আসার চান্স: ' + p.chance + '%';
+  document.getElementById('ct').textContent = p.conf + '%';
+  document.getElementById('cfl').style.width = p.conf + '%';
 }
+
 function showS(){
-  document.getElementById('wc').textContent=wc;
-  document.getElementById('lc').textContent=lc;
-  document.getElementById('tc').textContent=wc+lc;
-  document.getElementById('hc').textContent=hd.length;
+  document.getElementById('wc').textContent = wc;
+  document.getElementById('lc').textContent = lc;
+  document.getElementById('tc').textContent = wc+lc;
+  document.getElementById('hc').textContent = hd.length;
 }
+
 function showH(){
-  const h=document.getElementById('hy');
+  const h = document.getElementById('hy');
   if(!hd.length){h.innerHTML='<div class="em">NO RESULTS YET</div>';return;}
-  h.innerHTML=hd.map(x=>{
-    let cls=x.jp?'jackpot':'';
-    let result=x.jp?'👑 JACKPOT':(x.w?'✓ WIN':'✗ LOSS');
-    let rcls=x.jp?'jp':(x.w?'wt':'lt');
+  h.innerHTML = hd.map(x=>{
+    let cls = x.jp?'jackpot':'';
+    let result = x.jp?'👑 JACKPOT':(x.w?'✓ WIN':'✗ LOSS');
+    let rcls = x.jp?'jp':(x.w?'wt':'lt');
     return `<div class="hi ${cls}">
       <span class="is">#${x.i}</span>
       <span class="pd">${x.p}</span>
@@ -358,8 +440,8 @@ function showH(){
   }).join('');
 }
 
-setTimeout(fetchH,800);
-setInterval(fetchH,REFRESH);
+setTimeout(fetchH, 800);
+setInterval(fetchH, REFRESH);
 </script>
 </body>
-</html>
+  </html>
